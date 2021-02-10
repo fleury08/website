@@ -1,0 +1,115 @@
+
+:root {
+    /*--background-color: rgba(255, 255, 255, 0.92);*/
+    --background-color: rgba(255, 255, 255, 1);
+    --text-color: #2d2d2d;
+    --website-logo: url('../img/logo.png') no-repeat;
+    --welcome-background: url('../img/DSC_7868up.jpg') no-repeat 44% 40%;
+    --me-page-header-bg:  rgba(255,255,255,0.85);
+    --me-page-header-border: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+}
+
+[data-theme="dark"] {
+    /*--background-color: rgba(45, 45, 45, 0.92);*/
+    --background-color: rgba(45, 45, 45, 1);
+    --text-color: #fff;
+    --website-logo: url('../img/logo_inverse.png') no-repeat;
+    --welcome-background: url('../img/DSC_7868upBW.jpg') no-repeat 44% 40%;
+    --me-page-header-bg: rgba(45,45,45,0.85);
+    --me-page-header-border: linear-gradient(to right,rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(255,255,255,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+}
+
+html {
+    -webkit-transition: all 0.2s 0s ease;
+    -moz-transition: all 0.2s 0s ease;
+    -o-transition: all 0.2s 0s ease;
+    transition: all 0.2s 0s ease;
+    background: var(--welcome-background) fixed;
+}
+
+body {
+    color: var(--text-color);
+    background: none;
+}
+
+a {
+    -webkit-transition: all 0.2s 0s ease;
+    -moz-transition: all 0.2s 0s ease;
+    -o-transition: all 0.2s 0s ease;
+    transition: all 0.2s 0s ease;
+    text-decoration: none;
+    font-style: italic;
+}
+
+a:hover {
+    -webkit-transition: all 0.3s 0s ease;
+    -moz-transition: all 0.3s 0s ease;
+    -o-transition: all 0.3s 0s ease;
+    transition: all 0.3s 0s ease;
+    color: var(--text-color);
+}
+
+.navbar {
+    #background-color: var(--background-color);
+
+    color: var(--text-color);
+}
+
+.cutout-wrapper{
+    background-color: var(--background-color);
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.card {
+    background: none;
+}
+
+.page {
+    padding-top: 4em;
+    padding-bottom: 10em;
+    background: none;
+}
+
+.footer {
+    background: var(--background-color);
+}
+
+
+#me-page {
+    background-color: transparent;
+    height: 92vh;
+}
+
+.me-page-header{
+    -webkit-transition: all 0.3s 0s ease;
+    -moz-transition: all 0.3s 0s ease;
+    -o-transition: all 0.3s 0s ease;
+    transition: all 0.3s 0s ease;
+    background: var(--me-page-header-bg);
+    border-bottom: 0 solid;
+    border-radius: 20px;
+    /*border-image-slice: 1;
+    border-image-source: var(--me-page-header-border);*/
+}
+
+#welcome-page, #projects-page, #contact-page, #tools-page {
+    background: var(--background-color);
+}
+
+
+#contact-page .contact-link {
+    font-size: 4em;
+}
+
+#contact-page .contact-link:hover {
+    transform: scale(1.1, 1.1);
+}
+
+
+#website-logo {
+    background: var(--website-logo);
+    width: 70px;
+    height: 25px;
+    background-size: 100%, 100%, auto;
+}

@@ -1,0 +1,3 @@
+[run]
+source = jstanek
+omit = jstanek/test*

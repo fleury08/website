@@ -1,0 +1,3 @@
+[run]
+source = jstanek_frontend
+omit = jstanek_frontend/test*

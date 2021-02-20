@@ -24,7 +24,8 @@ html {
     -moz-transition: all 0.2s 0s ease;
     -o-transition: all 0.2s 0s ease;
     transition: all 0.2s 0s ease;
-    background: var(--welcome-background) fixed;
+    background-color: var(--background-color);
+    #background: var(--welcome-background) fixed;
 }
 
 body {
@@ -51,7 +52,6 @@ a:hover {
 
 .navbar {
     #background-color: var(--background-color);
-
     color: var(--text-color);
 }
 

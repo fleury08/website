@@ -78,7 +78,6 @@ a:hover {
 
 #me-page {
     background-color: transparent;
-    height: 92vh;
 }
 
 .me-page-header{
@@ -98,12 +97,14 @@ a:hover {
 }
 
 
-#contact-page .contact-link {
+.contact-link {
     font-size: 4em;
+    color: var(--text-color);
 }
 
-#contact-page .contact-link:hover {
+.contact-link:hover {
     transform: scale(1.1, 1.1);
+    color: var(--bs-primary);
 }
 
 

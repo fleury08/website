@@ -1,6 +1,8 @@
 
 :root {
     --background-color: rgba(255, 255, 255, 1);
+    --card-header-color: var(--bs-dark);
+    --card-header-text: var(--bs-light);
     --text-color: #2d2d2d;
     --website-logo: url('../img/logo.png') no-repeat;
     --me-page-header-bg:  rgba(255,255,255,0.85);
@@ -10,6 +12,8 @@
 [data-theme="dark"] {
     /*--background-color: rgba(45, 45, 45, 0.92);*/
     --background-color: rgba(45, 45, 45, 1);
+    --card-header-color: var(--bs-light);
+    --card-header-text: var(--bs-dark);
     --text-color: #fff;
     --website-logo: url('../img/logo_inverse.png') no-repeat;
     --me-page-header-bg: rgba(45,45,45,0.85);
@@ -68,6 +72,11 @@ a:hover {
 }
 .card {
     background: none;
+}
+
+.card-header {
+    color: var(--card-header-text);
+    background-color: var(--card-header-color);
 }
 
 .page {

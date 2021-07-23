@@ -1,16 +1,16 @@
 {% extends "layout.jinja2" %}
 {% block home %}
-	<div >
+	<div>
 
-            {% block me %}
-                {% include "me.jinja2" %}
-            {% endblock me %}
-			<div class="separator"></div>
+		{% block me %}
+			{% include "me.jinja2" %}
+		{% endblock me %}
 
-            {% block tools %}
-                {% include "tools.jinja2" %}
-            {% endblock tools %}
+		<div class="separator"></div>
 
+		{% block tools %}
+			{% include "tools.jinja2" %}
+		{% endblock tools %}
 
 	</div>
 {% endblock home %}

@@ -15,17 +15,15 @@
 {#    <link href="static/css/bootstrap/4.4.1/bootstrap-grid.min.css" rel="stylesheet">#}
 {#    <link href="static/css/bootstrap/4.4.1/bootstrap-reboot.min.css" rel="stylesheet">#}
 
-    <link href="static/css/bootstrap/5.0.0a/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/bootstrap/5.0.0a/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="static/css/bootstrap/5.0.0a/bootstrap-reboot.min.css" rel="stylesheet">
+    <link href="{{ request.static_path('jstanek_frontend:static/css/bootstrap/5.0.0a/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this scaffold -->
-    <link href="static/css/theme.css" rel="stylesheet">
+    <link href="{{ request.static_path('jstanek_frontend:static/css/theme.css') }}" rel="stylesheet">
 
     <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script href="static/js/html5shiv/3.7.3/html5shiv.min.js"></script>
-	    <script href="static/js/respond/1.4.2/respond.min.js"></script>
+        <script href="{{ request.static_path('jstanek_frontend:static/js/html5shiv/3.7.3/html5shiv.min.js') }}"></script>
+	    <script href="{{ request.static_path('jstanek_frontend:static/js/respond/1.4.2/respond.min.js') }}"></script>
     <![endif]-->
   </head>
 
@@ -51,8 +49,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="static/js/api.js"></script>
-	<script src="static/js/jquery/3.4.1/jquery.min.js"></script>
-	<script src="static/js/bootstrap/5.0.0a/bootstrap.min.js"></script>
+    <script src="{{ request.static_path('jstanek_frontend:static/js/api.js') }}"></script>
+	<script src="{{ request.static_path('jstanek_frontend:static/js/jquery/3.4.1/jquery.min.js') }}"></script>
+	<script src="{{ request.static_path('jstanek_frontend:static/js/bootstrap/5.0.0a/bootstrap.min.js') }}"></script>
   </body>
 </html>

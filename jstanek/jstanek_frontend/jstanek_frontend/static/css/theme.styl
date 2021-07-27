@@ -1,0 +1,147 @@
+:root
+    --background-color rgba(255, 255, 255, 1)
+    --card-header-color var(--bs-dark)
+    --card-header-text var(--bs-light)
+    --text-color #2d2d2d
+    --website-logo url('../img/logo.png') no-repeat
+    --me-page-header-bg rgba(255, 255, 255, 0.85)
+    --me-page-header-border linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%)
+
+[data-theme="dark"]
+    --background-color rgba(45, 45, 45, 1)
+    --card-header-color var(--bs-light)
+    --card-header-text var(--bs-dark)
+    --text-color #fff
+    --website-logo url('../img/logo_inverse.png') no-repeat
+    --me-page-header-bg rgba(45, 45, 45, 0.85)
+    --me-page-header-border linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.92), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%)
+ 
+
+html  
+    -webkit-transition all 0.2s 0s ease
+    -moz-transition all 0.2s 0s ease
+    -o-transition all 0.2s 0s ease
+    transition all 0.2s 0s ease
+    background-color var(--background-color)
+
+body  
+    color var(--text-color)
+    background none
+
+a
+    transition all 0.2s 0s ease
+    text-decoration none
+    font-style italic
+    &:hover
+        transition all 0.3s 0s ease
+        color var(--text-color)
+ 
+
+.separator  
+    height 5vh
+    width 100%
+    border-radius 25% 25%
+    border-style ridge
+    border-color var(--text-color)
+    border-width 2px 0 0 0
+ 
+
+.navbar
+    color var(--text-color)
+
+.cutout-wrapper  
+    background-color var(--background-color)
+    border-radius 10px
+    padding-left 1em
+    padding-right 1em
+
+.card  
+    background none
+ 
+
+.card-header  
+    color var(--card-header-text)
+    background-color var(--card-header-color)
+ 
+
+.page  
+    padding-top 4em
+    padding-bottom 10em
+    background none
+
+.footer  
+    background var(--background-color)
+
+#me-page  
+    background-color transparent
+ 
+.me-page-header
+    -webkit-transition all 0.3s 0s ease
+    -moz-transition all 0.3s 0s ease
+    -o-transition all 0.3s 0s ease
+    transition all 0.3s 0s ease
+    background var(--me-page-header-bg)
+    border-bottom 0 solid
+    border-radius 20px
+ 
+
+#welcome-page
+#projects-page
+#contact-page
+#tools-page
+    background var(--background-color)
+
+
+.contact-link  
+    font-size 4em
+    color var(--text-color)
+    &:hover
+        transform scale(1.1, 1.1)
+        color var(--bs-primary)
+
+#website-logo  
+    background var(--website-logo)
+    width 70px
+    height 25px
+    background-size 100%, 100%, auto
+ 
+
+.card-parallax  
+    --left-before-content -50%
+    --top-before-content -50%
+    background-size cover
+    margin auto
+    height auto
+    position relative
+    transition transform 0.1s ease
+    transform-style preserve-3d
+    will-change transform
+    z-index 0
+    overflow hidden
+    &:hover
+        .card-parallax-content
+            transform translateZ(1em)
+            z-index 0
+
+ 
+.card-parallax-content
+    position relative
+    z-index 1
+    transition transform 0.3s ease
+    &::before
+        content ""
+        position absolute
+        left var(--left-before-content)
+        top var(--top-before-content)
+        width 120%
+        height 120%
+        transform rotate(-40deg)
+        background #FFF
+        opacity var(--opacity-before-content)
+        z-index 2
+        transition opacity 0.2s linear
+ 
+
+@media (prefers-reduced-motion)  
+    .card-parallax  
+        transform none !important

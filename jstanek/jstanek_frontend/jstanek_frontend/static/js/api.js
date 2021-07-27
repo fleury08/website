@@ -10,16 +10,14 @@ class Api{
         this.api_token = new URLSearchParams(window.location.search).get("token");
     }
 
-    async sendRequest(request,target){
-        let response = await fetch(this.api_address, {
+    async sendRequest(request){
+        return await fetch(this.api_address, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify(request)
         });
-        var txt = await response.text();
-        target.value = txt;
     }
 
     async getBase64(query, method, target){
@@ -27,7 +25,9 @@ class Api{
             'query': query,
             'method': method
         };
-        this.sendRequest(request,target);
+        this.sendRequest(request).then(r=>{return r.json()}).then(json=>{
+            target.value = json['result']
+        });
     }
 
     async getPassword(length, lowercase, uppercase, numbers, symbols, target){
@@ -40,14 +40,18 @@ class Api{
                 'length': length
             }
         };
-        this.sendRequest(request,target);
+        this.sendRequest(request).then(r=>{return r.json()}).then(json=>{
+             target.value = json['result']
+        });
     }
 
     async getMongoId(mongoId, target){
         var request={
             'query': mongoId
         };
-        this.sendRequest(request,target);
+        this.sendRequest(request).then(r=>{return r.json()}).then(json=>{
+             target.value = json['result']
+        });
     }
 
     async getHash(alg, query, target){
@@ -55,6 +59,8 @@ class Api{
             'query': query,
             'alg': alg
         }
-        this.sendRequest(request,target);
+        this.sendRequest(request).then(r=>{return r.json()}).then(json=>{
+             target.value = json['result']
+        });
     }
 }

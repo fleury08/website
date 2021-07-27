@@ -10,16 +10,10 @@ class Base64ToolTest(unittest.TestCase):
 		self.s = 'test'
 
 	def test_base64_decode(self):
-		r = DummyRequest(json_body={
-			'query': base64_encode(self.s),
-			'method': 'decode'
-		}, method='POST')
+		r = DummyRequest(path=f'/api/v1/base64/decode/{base64_encode(self.s).hex()}', method='GET')
 		resp = str(base64_tool(r).body, encoding='utf-8')
 		self.assertEqual(resp, self.s)
 
 	def test_base64_encode(self):
-		r = DummyRequest(json_body={
-			'query': self.s,
-			'method': 'encode'
-		}, method='POST')
+		r = DummyRequest(path=f'/api/v1/base64/encode/{self.s}', method='GET')
 		self.assertEqual(base64_tool(r).body, b'dGVzdA==')

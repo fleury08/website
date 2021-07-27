@@ -2,7 +2,7 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 
-@view_config(route_name="password")
+@view_config(route_name="password", request_method='POST', renderer='json')
 def generate_password(request):
 	r_json = request.json_body
 	query = r_json['query']
@@ -13,8 +13,7 @@ def generate_password(request):
 		symbols=query["symbols"],
 		length=int(query["length"])
 	)
-
-	return Response(body=response)
+	return {'result': response}
 
 
 def _generate_password(uppercase: bool, lowercase: bool, numbers: bool, symbols: bool, length: int):

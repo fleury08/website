@@ -2,9 +2,9 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 
-@view_config(route_name="mongo")
+@view_config(route_name="mongo", request_method="POST", renderer='json')
 def mongodb_tool(request):
-	return Response(body=_id_parse(request))
+	return {'result': _id_parse(request)}
 
 
 def _id_parse(request):

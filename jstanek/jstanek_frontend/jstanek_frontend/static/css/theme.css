@@ -5,8 +5,8 @@
     --card-header-text: var(--bs-light);
     --text-color: #2d2d2d;
     --website-logo: url('../img/logo.png') no-repeat;
-    --me-page-header-bg:  rgba(255,255,255,0.85);
-    --me-page-header-border: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+    --me-page-header-bg: rgba(255, 255, 255, 0.85);
+    --me-page-header-border: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 [data-theme="dark"] {
@@ -16,8 +16,8 @@
     --card-header-text: var(--bs-dark);
     --text-color: #fff;
     --website-logo: url('../img/logo_inverse.png') no-repeat;
-    --me-page-header-bg: rgba(45,45,45,0.85);
-    --me-page-header-border: linear-gradient(to right,rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(255,255,255,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+    --me-page-header-bg: rgba(45, 45, 45, 0.85);
+    --me-page-header-border: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0.92), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 html {
@@ -50,7 +50,7 @@ a:hover {
     color: var(--text-color);
 }
 
-.separator{
+.separator {
     height: 5vh;
     width: 100%;
     border-radius: 25% 25%;
@@ -64,12 +64,13 @@ a:hover {
     color: var(--text-color);
 }
 
-.cutout-wrapper{
+.cutout-wrapper {
     background-color: var(--background-color);
     border-radius: 10px;
     padding-left: 1em;
     padding-right: 1em;
 }
+
 .card {
     background: none;
 }
@@ -94,7 +95,7 @@ a:hover {
     background-color: transparent;
 }
 
-.me-page-header{
+.me-page-header {
     -webkit-transition: all 0.3s 0s ease;
     -moz-transition: all 0.3s 0s ease;
     -o-transition: all 0.3s 0s ease;
@@ -125,4 +126,55 @@ a:hover {
     width: 70px;
     height: 25px;
     background-size: 100%, 100%, auto;
+}
+
+.card-parallax {
+    --left-before-content: -50%;
+    --top-before-content: -50%;
+    background-size: cover;
+    margin: auto;
+    height: auto;
+    position: relative;
+    transition: transform 0.1s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Slight parallax effect on hover */
+.card-parallax:hover .card-parallax-content{
+    transform: translateZ(1em);
+    z-index: 0;
+}
+
+.card-parallax:hover .card-parallax-content::before{
+    opacity: 0.1;
+}
+
+
+.card-parallax-content {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.card-parallax-content::before {
+    content: "";
+    position: absolute;
+    left:var(--left-before-content);
+    top: var(--top-before-content);
+    width: 120%;
+    height: 120%;
+    transform: rotate(-40deg);
+    background: #FFF;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.2s linear;
+}
+
+@media (prefers-reduced-motion) {
+    .card-parallax {
+        transform: none !important;
+    }
 }

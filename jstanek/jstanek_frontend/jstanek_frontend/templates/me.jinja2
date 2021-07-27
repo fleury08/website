@@ -1,29 +1,39 @@
 {% block me %}
-        <div id="me-page" class="page">
-			<div class="container h-100">
-				<div class="row">
-					<div class="col-sm-12 col-md-4">
-						<div class="row">
-							<div class="col-12">
-								<img class="border-0 rounded-circle img-thumbnail" src="{{ request.static_path('jstanek_frontend:static/img/DSC_7787upBW_closeup.jpg') }}">
+	<div id="me-page"
+		 class="page">
+		<div class="container h-100">
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card-parallax w-100 h-100 rounded-circle">
+								<div class="card-parallax-content">
+								<img class="border-0 rounded-circle img-thumbnail"
+									 src="{{ request.static_path('jstanek_frontend:static/img/DSC_7787upBW_closeup.jpg') }}">
+								</div>
 							</div>
 						</div>
-
-						{% block contact %}
-							{% include "contact.jinja2" %}
-						{% endblock contact %}
 					</div>
-					<div class="col-sm-12 col-md-8 align-self-center">
-						<div class="me-page-header p-3">
-							<div class="display-1">Hello there!</div>
-							<div class="display-3">It's me, <b>Jaroslav Staněk</b></div>
-							<p>Let me quickly introduce myself. Born in 1989, started discovering PCs by age 4.
-								My first encounter was Commodore 64 and 286 PC. After elementary I went for 4 Years to High School then 3 years of University (both specialized on networking).
-								Currently developing for private company but trying to do my own stuff.
-							</p>
-						</div>
+
+					{% block contact %}
+						{% include "contact.jinja2" %}
+					{% endblock contact %}
+				</div>
+				<div class="col-sm-12 col-md-8 align-self-center">
+					<div class="me-page-header p-3">
+						<div class="display-1">Hello there!</div>
+						<div class="display-3">It's me, <b>Jaroslav Staněk</b></div>
+						<p>Let me quickly introduce myself. Born in 1989, started discovering PCs by age 4.
+							My first encounter was Commodore 64 and 286 PC. After elementary I went for 4 Years to High School then 3 years of University (both
+							specialized on networking).
+							Currently developing for private company but trying to do my own stuff.
+						</p>
 					</div>
 				</div>
 			</div>
-        </div>
+		</div>
+	</div>
+	<script>
+		{% include '../static/js/card-parallax.js' %}
+	</script>
 {% endblock me %}

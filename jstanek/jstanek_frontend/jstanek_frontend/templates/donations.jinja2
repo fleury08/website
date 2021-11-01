@@ -1,5 +1,16 @@
 {% block donations %}
-    <div id="donations-page">
-
+    <div id="donations-page" class="page">
+        <div class="h1 text-center">Donations</div>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="{{ request.static_path('jstanek_frontend:static/img/paypal.png') }}" class="card-img-top" alt="PayPal Donation QR Code">
+                    <div class="card-body">
+                        <h5 class="card-title">PayPal</h5>
+                        <p class="card-text"><a href="https://paypal.me/jaroush">https://paypal.me/jaroush</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

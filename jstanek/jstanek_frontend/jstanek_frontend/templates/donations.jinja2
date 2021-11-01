@@ -1,13 +1,36 @@
 {% block donations %}
     <div id="donations-page" class="page">
         <div class="h1 text-center">Donations</div>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-                <div class="card">
-                    <img src="{{ request.static_path('jstanek_frontend:static/img/paypal.png') }}" class="card-img-top" alt="PayPal Donation QR Code">
-                    <div class="card-body">
-                        <h5 class="card-title">PayPal</h5>
-                        <p class="card-text"><a href="https://paypal.me/jaroush">https://paypal.me/jaroush</a></p>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ request.static_path('jstanek_frontend:static/img/paypal.png') }}"
+                             class="card-img-top" alt="PayPal Donation QR Code">
+                        <div class="card-body">
+                            <h5 class="card-title">PayPal</h5>
+                            <p class="card-text"><a href="https://paypal.me/jaroush">https://paypal.me/jaroush</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ request.static_path('jstanek_frontend:static/img/bitcoin.png') }}"
+                             class="card-img-top" alt="Bitcoin Donation QR Code">
+                        <div class="card-body">
+                            <h5 class="card-title">Bitcoin Address</h5>
+                            <p class="card-text"><a href="bitcoin:bc1q7pt5gwkn7umnk72u763uvwuyd99kmwh0g24eekl6828x3wyezscskq65wd">bc1q7pt5gwkn7umnk72u763uvwuyd99kmwh0g24eekl6828x3wyezscskq65wd</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ request.static_path('jstanek_frontend:static/img/monero.png') }}"
+                             class="card-img-top" alt="Monero Donation QR Code">
+                        <div class="card-body">
+                            <h5 class="card-title">Monero Address</h5>
+                            <p class="card-text"><a href="monero:48HY8Q9JE6rE4b99ixQduvCY6EB8Lc3zbbcni6zd2mcbUMX5TE64BEiSHtthbPfWNgR8bafB4dh1za1ar3DwKotB4XMDgwL">48HY8Q9JE6rE4b99ixQduvCY6EB8Lc3zbbcni6zd2mcbUMX5TE64BEiSHtthbPfWNgR8bafB4dh1za1ar3DwKotB4XMDgwL</a></p>
+                        </div>
                     </div>
                 </div>
             </div>

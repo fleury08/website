@@ -2,8 +2,8 @@
     <div id="donations-page" class="page">
         <div class="h1 text-center">Donations</div>
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
+            <div class="row row-cols-1 g-4">
+                <div class="col col-md-3">
                     <div class="card">
                         <img src="{{ request.static_path('jstanek_frontend:static/img/paypal.png') }}"
                              class="card-img-top" alt="PayPal Donation QR Code">
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-md-3">
                     <div class="card">
                         <img src="{{ request.static_path('jstanek_frontend:static/img/bitcoin.png') }}"
                              class="card-img-top" alt="Bitcoin Donation QR Code">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-md-6">
                     <div class="card">
                         <img src="{{ request.static_path('jstanek_frontend:static/img/share_ban_3h6guuuhqimjzm4d7w6tywzwtmhyq13rg5rqjmt5piysomhdoek6jcsfmgki.png') }}"
                              class="card-img-top" alt="Banano Donation QR Code">

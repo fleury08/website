@@ -24,7 +24,7 @@ tests_require = [
 
 setup(
     name='jstanek_frontend',
-    version='1.0.4',
+    version='1.0.5',
     description='jstanek frontend',
     long_description=README + '\n\n' + CHANGES,
     classifiers=[

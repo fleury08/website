@@ -1,5 +1,4 @@
-{% block projects %}
-        <div id="projects-page" class="page">
+ <div id="projects-page" class="page">
             <div class="h1 text-center">My public projects, all not finished of course.</div>
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2">
@@ -7,7 +6,7 @@
                         <div class="card border-0 mb-5 mt-5">
                           <div class="row no-gutters">
                             <div class="col-md-3">
-                              <img src="../../../fe/src/lib/assets/img/com.github.fleury08.prettifier.png" class="card-img" alt="prettifier">
+                              <img src="../lib/assets/img/com.github.fleury08.prettifier.png" class="card-img" alt="prettifier">
                             </div>
                             <div class="col-md-9">
                               <div class="card-body">
@@ -24,7 +23,7 @@
                         <div class="card border-0 mb-5 mt-5">
                           <div class="row no-gutters">
                             <div class="col-md-3">
-                              <img src="../../../fe/src/lib/assets/img/Python-logo-notext.svg" class="card-img" alt="prettifier">
+                              <img src="../lib/assets/img/Python-logo-notext.svg" class="card-img" alt="prettifier">
                             </div>
                             <div class="col-md-9">
                               <div class="card-body">
@@ -40,4 +39,3 @@
 
             </div>
         </div>
-{% endblock projects %}

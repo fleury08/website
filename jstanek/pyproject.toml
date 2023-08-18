@@ -1,20 +1,14 @@
 [tool.poetry]
-name = "jstanek-backend"
+name = "jstanek"
 version = "0.1.0"
 description = ""
 authors = ["Jaroslav Staněk <jaroslav-stanek@pm.me>"]
 readme = "README.md"
-packages = [{include = "jstanek_backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.101.0"
-black = "^23.7.0"
-uvicorn = "^0.23.2"
+fastapi = "^0.101.1"
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.7.0"
-pylint = "^2.17.5"
 
 [build-system]
 requires = ["poetry-core"]

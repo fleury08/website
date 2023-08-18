@@ -1,0 +1,94 @@
+:root {
+  --background-color: #fff;
+  --card-header-color: var(--bs-dark);
+  --card-header-text: var(--bs-light);
+  --text-color: #2d2d2d;
+  --website-logo: url("$lib/assets/img/logo.png") no-repeat;
+  --me-page-header-bg: rgba(255,255,255,0.85);
+  --me-page-header-border: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+}
+[data-theme="dark"] {
+  --background-color: #2d2d2d;
+  --text-color: #fff;
+  --website-logo: url("$lib/assets/img/logo_inverse.png") no-repeat;
+  --me-page-header-bg: rgba(45,45,45,0.85);
+  --me-page-header-border: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(255,255,255,0.92), rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%);
+}
+html {
+  -webkit-transition: all 0.2s 0s ease;
+  -moz-transition: all 0.2s 0s ease;
+  -o-transition: all 0.2s 0s ease;
+  transition: all 0.2s 0s ease;
+  background-color: var(--background-color);
+}
+body,
+label {
+  color: var(--text-color);
+  background: none;
+}
+a {
+  transition: all 0.2s 0s ease;
+  text-decoration: none;
+  font-style: italic;
+}
+a:hover {
+  transition: all 0.3s 0s ease;
+  color: var(--text-color);
+}
+.separator {
+  height: 5vh;
+  width: 100%;
+  border-radius: 25% 25%;
+  border-style: ridge;
+  border-color: var(--text-color);
+  border-width: 2px 0 0 0;
+}
+.navbar {
+  color: var(--text-color);
+}
+.cutout-wrapper {
+  background-color: var(--background-color);
+  border-radius: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.page {
+  padding-top: 4em;
+  padding-bottom: 10em;
+  background: none;
+}
+.footer {
+  background: var(--background-color);
+}
+#me-page {
+  background-color: transparent;
+}
+.me-page-header {
+  -webkit-transition: all 0.3s 0s ease;
+  -moz-transition: all 0.3s 0s ease;
+  -o-transition: all 0.3s 0s ease;
+  transition: all 0.3s 0s ease;
+  background: var(--me-page-header-bg);
+  border-bottom: 0 solid;
+  border-radius: 20px;
+}
+#welcome-page,
+#projects-page,
+#contact-page,
+#tools-page {
+  background: var(--background-color);
+}
+.contact-link {
+  font-size: 4em;
+  color: var(--text-color);
+}
+.contact-link:hover {
+  transform: scale(1.1, 1.1);
+  color: var(--bs-primary);
+}
+.website-logo {
+  background: var(--website-logo);
+  width: 70px;
+  height: 25px;
+  background-size: 100%, 100%, auto;
+}

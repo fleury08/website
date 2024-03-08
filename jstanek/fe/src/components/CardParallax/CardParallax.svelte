@@ -1,26 +1,27 @@
 <script>
-    import {handleHover, resetStyles} from "./card-parallax.ts";
+  import { handleHover, resetStyles, spinCard } from "./card-parallax";
 
-    export let image = ""
-    export let rounded = true
-    export let borderless = true
-
+  export let image = "";
+  export let rounded = true;
+  export let borderless = true;
 
 </script>
 
 <div class="card-parallax w-100 h-100" class:rounded-circle={rounded}
      role="img"
-             on:mousemove={handleHover}
-             on:mouseleave={resetStyles} >
-    <div class="card-parallax-content">
-        <img class="img-thumbnail" alt="Jaroslav Staněk"
-             class:rounded-circle={rounded}
-             class:border-0={borderless}
-             src="{image}">
-    </div>
+     on:mousemove={handleHover}
+     on:mouseleave={resetStyles}
+     on:dblclick={spinCard}
+>
+  <div class="card-parallax-content">
+    <img class="img-thumbnail" alt="Jaroslav Staněk"
+         class:rounded-circle={rounded}
+         class:border-0={borderless}
+         src="{image}">
+  </div>
 </div>
 <style lang="stylus">
-.card-parallax
+  .card-parallax
     --opacity-before-content 0
     --left-before-content -80%
     --top-before-content -80%
@@ -33,31 +34,33 @@
     will-change transform
     z-index 0
     overflow hidden
+
     &:hover
-        .card-parallax-content
-            transform translateZ(1em)
-            z-index 0
+      .card-parallax-content
+        transform translateZ(1em)
+        z-index 0
 
 
-.card-parallax-content
+  .card-parallax-content
     position relative
     z-index 1
     transition transform 0.3s ease
+
     &::before
-        content ""
-        position absolute
-        left var(--left-before-content)
-        top var(--top-before-content)
-        width 150%
-        height 150%
-        transform rotate(-45deg)
-        background radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(255,255, 255, 0) 80%,rgba(255, 255, 255, 0) 100%)
-        opacity var(--opacity-before-content)
-        z-index 2
-        transition opacity 0.2s linear
+      content ""
+      position absolute
+      left var(--left-before-content)
+      top var(--top-before-content)
+      width 150%
+      height 150%
+      transform rotate(-45deg)
+      background radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+      opacity var(--opacity-before-content)
+      z-index 2
+      transition opacity 0.2s linear
 
 
-@media (prefers-reduced-motion)
+  @media (prefers-reduced-motion)
     .card-parallax
-        transform none !important
+      transform none !important
 </style>

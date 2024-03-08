@@ -9,15 +9,22 @@ export function handleHover(ev: MouseEvent) {
 	const rotateX = (THRESHOLD / 2 - horizontal * THRESHOLD)
 	const rotateY = (vertical * THRESHOLD - THRESHOLD / 2)
 	style.transform = `perspective(${clientWidth}px) rotateX(${rotateY}deg) rotateY(${rotateX}deg) scale3d(1, 1, 1)`
-	style.setProperty("--opacity-before-content", `${(Math.abs(rotateX)/THRESHOLD)+.5} `)
+	style.setProperty("--opacity-before-content", `${(Math.abs(rotateX)/THRESHOLD)+.5}`)
 
 }
 
 export function resetStyles(ev: MouseEvent) {
 	setTimeout(() => {
 		const el: HTMLElement = ev.target as HTMLElement
-		el.style.transform = `perspective(${el.clientWidth}px) rotateX(0deg) rotateY(0deg)`
+		el.style.transform = `perspective(${el.clientWidth}px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1)`
+		el.style.transitionDuration = "0"
 		el.style.setProperty("--opacity-before-content", "0")
 	}, 200)
 }
 
+export function spinCard(ev: MouseEvent) {
+	const el: HTMLElement = ev.target as HTMLElement
+	el.style.transform = `rotate3D(0, 0, 1, 360deg)`
+	el.style.transitionDuration = "1s"
+
+}

@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "jstanek-backend"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["Jaroslav Staněk <jaroslav-stanek@pm.me>"]
 readme = "README.md"
-packages = [{include = "jstanek_backend"}]
+packages = [{include = "jstanek-eu-backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

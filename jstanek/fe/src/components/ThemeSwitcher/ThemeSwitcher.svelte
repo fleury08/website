@@ -1,8 +1,9 @@
 <script>
-    import {Sun, Moon} from 'svelte-bootstrap-icons'
-    import {applyTheme, switchTheme, theme} from "./theme-switcher";
+  import Sun from "~icons/bi/sun.svelte"
+  import Moon from "~icons/bi/moon.svelte"
+  import { applyTheme, switchTheme, theme } from "./theme-switcher";
 
-    applyTheme()
+  applyTheme()
 </script>
 
 

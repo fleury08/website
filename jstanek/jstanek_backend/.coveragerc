@@ -1,3 +1,0 @@
-[run]
-source = jstanek_backend
-omit = jstanek_backend/test*

@@ -79,12 +79,16 @@ a:hover {
   background: var(--background-color);
 }
 .contact-link {
-  font-size: 4em;
+  font-size: 4rem;
   color: var(--text-color);
 }
 .contact-link:hover {
   transform: scale(1.1, 1.1);
   color: var(--bs-primary);
+}
+.contact-link svg {
+  height: 1em;
+  width: 1em;
 }
 .website-logo {
   background: var(--website-logo);

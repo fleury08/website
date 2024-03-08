@@ -2,12 +2,12 @@
 name = "jstanek"
 version = "0.1.0"
 description = ""
-authors = ["Jaroslav Staněk <jaroslav-stanek@pm.me>"]
+authors = ["Jaroslav Staněk <j.stanek@datalife.cz>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-fastapi = "^0.101.1"
+python = "^3.12"
+fastapi = "^0.110.0"
 
 
 [build-system]

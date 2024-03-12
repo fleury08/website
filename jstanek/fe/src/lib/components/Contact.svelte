@@ -4,16 +4,16 @@
   import GitHub from "~icons/bi/github.svelte";
 </script>
 
-<div id="contact-page" class="w-100 d-flex justify-content-center align-items-center gap-3 ">
-  <a target="_blank" href="https://x.com/jar0us" class="contact-link text-center">
+<div class="contact-links">
+  <a target="_blank" href="https://x.com/jar0us">
     <TwitterX />
   </a>
 
-  <a href="mailto:jaroslav-stanek@pm.me" class="contact-link text-center">
+  <a href="mailto:jaroslav-stanek@pm.me">
     <Email />
   </a>
 
-  <a target="_blank" href="https://github.com/fleury08" class="contact-link text-center">
+  <a target="_blank" href="https://github.com/fleury08">
     <GitHub />
   </a>
 

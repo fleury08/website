@@ -17,20 +17,22 @@ html {
   @apply h-[5vh] w-[100%] rounded-[25%] border-t-2;
 }
 
-
 .page {
   @apply pt-4 pb-10;
 }
 
-.contact-link {
-  font-size: 4rem;
+.contact-links {
+  @apply w-full flex justify-center gap-4 md:gap-12;
 }
-.contact-link:hover {
-  transform: scale(1.1, 1.1);
+
+.contact-links a {
+  @apply text-xl sm:text-2xl md:text-4xl xl:text-5xl;
 }
-.contact-link svg {
-  @apply h-1 w-1;
+
+.contact-links a:hover {
+  @apply transform scale-110;
 }
+
 .website-logo {
     @apply bg-[url("$lib/assets/img/logo.png")] dark:bg-[url("$lib/assets/img/logo_inverse.png")] w-[70px] h-[25px] bg-center bg-contain bg-no-repeat;
 }

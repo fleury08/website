@@ -7,7 +7,7 @@
 </script>
 
 
-<Button on:click={toggleMode} variant="outline" size="icon">
+<Button on:click={toggleMode}  variant="ghost" size="icon">
   <IconSun
     class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
   />

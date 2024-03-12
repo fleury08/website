@@ -22,9 +22,7 @@ export function resetStyles(ev: MouseEvent) {
 	}, 200)
 }
 
-export function spinCard(ev: MouseEvent) {
+export function spinCoin(ev: MouseEvent) {
 	const el: HTMLElement = ev.target as HTMLElement
-	el.style.transform = `rotate3D(0, 0, 1, 360deg)`
-	el.style.transitionDuration = "1s"
-
+	el.classList.add("coin-rotate")
 }

@@ -6,7 +6,7 @@
                         <div class="card border-0 mb-5 mt-5">
                           <div class="row no-gutters">
                             <div class="col-md-3">
-                              <img src="../lib/assets/img/com.github.fleury08.prettifier.png" class="card-img" alt="prettifier">
+                              <img src="../assets/img/com.github.fleury08.prettifier.png" class="card-img" alt="prettifier">
                             </div>
                             <div class="col-md-9">
                               <div class="card-body">
@@ -23,7 +23,7 @@
                         <div class="card border-0 mb-5 mt-5">
                           <div class="row no-gutters">
                             <div class="col-md-3">
-                              <img src="../lib/assets/img/Python-logo-notext.svg" class="card-img" alt="prettifier">
+                              <img src="../assets/img/Python-logo-notext.svg" class="card-img" alt="prettifier">
                             </div>
                             <div class="col-md-9">
                               <div class="card-body">

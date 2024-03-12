@@ -7,14 +7,6 @@ export default defineConfig({
     Icons({
       compiler: 'svelte',
     })],
-
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: '@use "src/variables.scss" as *;'
-			}
-		}
-	},
 	server:{
 		proxy:{
 			"/api":

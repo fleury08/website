@@ -1,23 +1,22 @@
 import logging
 from http import HTTPStatus
 
-from fastapi import FastAPI
+from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 
 from .tools import base64_tool, hash_tool, mongodb_tool, passsword_generator
-from .tools.passsword_generator import PasswordOptions
 from .tools.hash_tool import HashObject
+from .tools.passsword_generator import PasswordOptions
 
-app = FastAPI()
-logging.basicConfig(level=logging.INFO)
+router = APIRouter(prefix="")
 
 
-@app.get("/")
+@router.get("/")
 async def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/password")
+@router.post("/password")
 async def create_password(
     password_options: PasswordOptions = None,
 ):
@@ -32,7 +31,7 @@ async def create_password(
     raise HTTPException(HTTPStatus.BAD_REQUEST, detail="Invalid password options")
 
 
-@app.get("/base64/encode/{to_encode}")
+@router.get("/base64/encode/{to_encode}")
 async def base64_encode(to_encode: str):
     logging.info(to_encode)
     try:
@@ -41,7 +40,7 @@ async def base64_encode(to_encode: str):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@app.get("/base64/decode/{to_decode}")
+@router.get("/base64/decode/{to_decode}")
 async def base64_decode(to_decode: bytes):
     logging.info(to_decode)
     try:
@@ -50,19 +49,21 @@ async def base64_decode(to_decode: bytes):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@app.post("/hash")
+@router.post("/hash")
 async def hash_value(to_hash: HashObject):
     logging.info(to_hash)
     try:
-        return {"result": str(hash_tool.hash_text(to_hash))}
+        return {"result": hash_tool.hash_text(to_hash)}
     except ValueError as ve:
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@app.get("/mongo/{mongo_id}")
+@router.get("/mongo/{mongo_id}")
 async def parse_mongo_id(mongo_id: str):
     logging.info(mongo_id)
     try:
         return {"result": str(mongodb_tool.mongo_id_parse(_id=mongo_id))}
     except ValueError as ve:
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
+
+

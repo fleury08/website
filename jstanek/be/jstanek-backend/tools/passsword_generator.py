@@ -2,6 +2,7 @@ import logging
 import string
 from dataclasses import dataclass
 import random
+from functools import cache
 
 
 @dataclass

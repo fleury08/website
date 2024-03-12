@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    @apply bg-white dark:bg-black text-black dark:text-white;
+}
+
+html {
+  -webkit-transition: all 0.2s 0s ease;
+  -moz-transition: all 0.2s 0s ease;
+  -o-transition: all 0.2s 0s ease;
+  transition: all 0.2s 0s ease;
+}
+
+.separator {
+  @apply h-[5vh] w-[100%] rounded-[25%] border-t-2;
+}
+
+
+.page {
+  @apply pt-4 pb-10;
+}
+
+.contact-link {
+  font-size: 4rem;
+}
+.contact-link:hover {
+  transform: scale(1.1, 1.1);
+}
+.contact-link svg {
+  @apply h-1 w-1;
+}
+.website-logo {
+    @apply bg-[url("$lib/assets/img/logo.png")] dark:bg-[url("$lib/assets/img/logo_inverse.png")] w-[70px] h-[25px] bg-center bg-contain bg-no-repeat;
+}

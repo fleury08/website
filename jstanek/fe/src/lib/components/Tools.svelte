@@ -22,9 +22,9 @@
 
 <div id="tools-page"
      class="page">
-  <div class="h1 text-center">Useful tools</div>
+  <div class="text-6xl text-center">Useful tools</div>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 gap-4">
       <div class="col mb-4">
         <div class="card">
           <div class="card-header">

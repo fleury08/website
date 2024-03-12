@@ -1,6 +1,7 @@
 import hashlib
 import logging
 from dataclasses import dataclass
+from functools import cache
 from typing import Literal
 
 type SupportedAlgorithms = Literal[
@@ -12,6 +13,7 @@ type SupportedAlgorithms = Literal[
 class HashObject:
     text: str = ""
     alg: SupportedAlgorithms = "sha-512"
+
 
 
 def hash_text(to_hash: HashObject):

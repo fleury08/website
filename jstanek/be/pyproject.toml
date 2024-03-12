@@ -4,7 +4,7 @@ version = "1.0.0"
 description = ""
 authors = ["Jaroslav Staněk <jaroslav-stanek@pm.me>"]
 readme = "README.md"
-packages = [{include = "jstanek-eu-backend"}]
+packages = [{include = "jstanek-backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

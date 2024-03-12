@@ -1,6 +1,8 @@
 from datetime import datetime
+from functools import cache
 
 
+@cache
 def mongo_id_parse(_id: str):
 
     if not _id:

@@ -1,6 +1,8 @@
 <script lang="ts">
-  import "../app.scss";
-  import "$lib/assets/css/theme.css";
+  import "../app.pcss";
+	import "$lib/assets/css/theme.pcss";
+	import { ModeWatcher } from 'mode-watcher';
 </script>
 
-<slot />
+			<ModeWatcher />
+<slot></slot>

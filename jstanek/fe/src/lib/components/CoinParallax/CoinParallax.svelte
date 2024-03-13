@@ -23,6 +23,9 @@
 	</div>
 </div>
 <style lang="postcss">
+
+
+
     .card-parallax img {
         @apply aspect-square;
     }
@@ -42,7 +45,6 @@
         --opacity-before-content: 0;
         --left-before-content: -80%;
         --top-before-content: -80%;
-        transform-style: preserve-3d;
     }
 
     .card-parallax:hover .card-parallax-content {
@@ -59,13 +61,9 @@
         transition-transform
         duration-300
         ease-in-out;
+        transform-style: preserve-3d;
     }
 
-		.coin-rotate {
-				transition-duration: 1s;
-				--opacity-before-content: 1	;
-				transform: rotate3D(0, 1, 0, 360deg);
-		}
 
     .card-parallax-content::before {
         @apply content-['']
@@ -79,9 +77,8 @@
         ease-linear
         opacity-[var(--opacity-before-content)]
         left-[var(--left-before-content)]
-        top-[var(--top-before-content)]
-				bg-gradient-to-l from-white to-transparent;
-        //background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%);
+        top-[var(--top-before-content)];
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%);
     }
 
     @media (prefers-reduced-motion) {

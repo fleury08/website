@@ -3,8 +3,7 @@
 	import portrait from "$lib/assets/img/DSC_7787upBW_closeup.jpg";
 	import CoinParallax from "$lib/components/CoinParallax/CoinParallax.svelte";
 </script>
-<div id="me-page"
-     class="page">
+<div class="page">
   <div class="container">
     <div class="flex flex-col sm:flex-row gap-12 sm:gap-24 items-center">
       <div class="flex flex-col gap-3 w-8/12 sm:w-4/12 ">

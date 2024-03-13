@@ -14,11 +14,15 @@ html {
 }
 
 .separator {
-  @apply h-[5vh] w-[100%] rounded-[25%] border-t-2;
+  @apply h-[5vh] w-[100%] rounded-[25%] border-t-2 mt-10 mb-10;
 }
 
 .page {
-  @apply pt-4 pb-10;
+  @apply pt-4 pb-10 snap-start flex flex-col justify-center items-center min-h-lvh;
+}
+
+.page > .container{
+  @apply justify-center align-middle;
 }
 
 .contact-links {
@@ -35,4 +39,12 @@ html {
 
 .website-logo {
     @apply bg-[url("$lib/assets/img/logo.png")] dark:bg-[url("$lib/assets/img/logo_inverse.png")] w-[70px] h-[25px] bg-center bg-contain bg-no-repeat;
+}
+
+.footer{
+  @apply flex w-full items-center flex-col text-muted-foreground ;
+}
+
+.footer a{
+  @apply underline me-auto px-1;
 }

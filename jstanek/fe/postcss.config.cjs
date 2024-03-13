@@ -1,5 +1,3 @@
-import postcss_for from 'postcss-for';
-
 const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 

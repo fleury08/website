@@ -1,15 +1,18 @@
+from dataclasses import dataclass
 from datetime import datetime
-from functools import cache
 
 
-@cache
-def mongo_id_parse(_id: str):
+@dataclass
+class MongoDbObject:
+    object_id: str
 
-    if not _id:
+
+def mongo_id_parse(mdb_obj: MongoDbObject) -> datetime:
+    if not mdb_obj or not mdb_obj.object_id:
         raise ValueError("Invalid mongo id, empty")
 
-    if len(_id) == 24:
-        timestamp = int(_id[:8], 16)
+    if len(mdb_obj.object_id) == 24:
+        timestamp = int(mdb_obj.object_id[:8], 16)
         return datetime.fromtimestamp(timestamp)
 
     raise ValueError("Invalid mongo id, not 24 characters")

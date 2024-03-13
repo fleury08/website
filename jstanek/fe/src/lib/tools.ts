@@ -1,9 +1,9 @@
-import type { HashObject, PasswordOptions } from '$lib/types/tools';
+import type { Base64Object, HashObject, MongoDbObject, PasswordOptions, TextObject } from '$lib/types/tools';
 
 export const defaultHashObject = (): HashObject => {
 	return {
 		text: '',
-		alg: 'sha-512'
+		alg: ''
 	};
 };
 
@@ -16,6 +16,20 @@ export const defaultPasswordOptions = (): PasswordOptions => {
 		lowercase: true
 	};
 };
+
+export const defaultTextObject = (): TextObject => {
+	return {
+		text: ''
+	}
+}
+
+export const defaultBase64Object = (): Base64Object => {
+	return defaultTextObject();
+}
+
+export const defaultMongoDbIdObject = (): MongoDbObject => {
+	return {object_id: ''};
+}
 
 export async function hashText(hashObject: HashObject) {
 	const hash = await fetch('/api/hash', {
@@ -43,8 +57,35 @@ export async function generatePassword(passwordObject: PasswordOptions) {
 	return ps.result;
 }
 
-async function encodeText() {}
+export async function base64Encode(base64Object: Base64Object) {
+	return base64Convert('encode', base64Object);
+}
 
-async function decodeText() {}
+export async function base64Decode(base64Object: Base64Object) {
+	return base64Convert('decode', base64Object);
+}
 
-async function mongoIdConvert() {}
+async function base64Convert(method: 'encode' | 'decode', base64Object: Base64Object) {
+	const b64o = await fetch(`/api/base64/${method}`, {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(base64Object)
+	}).then((j) => j.json());
+	return b64o.result;
+}
+
+export async function mongoIdConvert(mdbObj: MongoDbObject) {
+	const mdbId = await fetch('/api/convert/mongodb/id', {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(mdbObj)
+	}).then((j) => j.json());
+
+	return mdbId.result;
+}

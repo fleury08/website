@@ -7,10 +7,19 @@ export type PasswordOptions = {
   lowercase: boolean
 }
 
-export type HashObject = {
+
+export type TextObject = {
   text: string
+}
+
+export type HashObject = TextObject & {
   alg: string
 }
 
+
+export type Base64Object = TextObject
+export type MongoDbObject = {
+  object_id: string
+}
 
 export default {}

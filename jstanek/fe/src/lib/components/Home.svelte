@@ -3,7 +3,7 @@
     import Tools from "./Tools.svelte";
     import Donations from "./Donations.svelte";
 </script>
-<div class="snap-mandatory snap-y flex flex-col">
+<div class="flex flex-col">
 
     <AboutMe></AboutMe>
 

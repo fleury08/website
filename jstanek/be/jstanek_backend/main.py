@@ -5,7 +5,9 @@ from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 
 from .tools import base64_tool, hash_tool, mongodb_tool, passsword_generator
+from .tools.base64_tool import Base64Object
 from .tools.hash_tool import HashObject
+from .tools.mongodb_tool import MongoDbObject
 from .tools.passsword_generator import PasswordOptions
 
 router = APIRouter(prefix="")
@@ -18,7 +20,7 @@ async def read_root():
 
 @router.post("/password")
 async def create_password(
-    password_options: PasswordOptions = None,
+        password_options: PasswordOptions = None,
 ):
     logging.info(password_options)
     if password_options:
@@ -31,20 +33,20 @@ async def create_password(
     raise HTTPException(HTTPStatus.BAD_REQUEST, detail="Invalid password options")
 
 
-@router.get("/base64/encode/{to_encode}")
-async def base64_encode(to_encode: str):
-    logging.info(to_encode)
+@router.post("/base64/encode")
+async def base64_encode(b64object: Base64Object):
+    logging.info(b64object)
     try:
-        return {"result": str(base64_tool.base64_encode(to_encode))}
+        return {"result": str(base64_tool.base64_encode(b64object), "utf-8")}
     except ValueError as ve:
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@router.get("/base64/decode/{to_decode}")
-async def base64_decode(to_decode: bytes):
-    logging.info(to_decode)
+@router.post("/base64/decode")
+async def base64_decode(b64object: Base64Object):
+    logging.info(b64object)
     try:
-        return {"result": str(base64_tool.base64_decode(to_decode))}
+        return {"result": str(base64_tool.base64_decode(b64object), "utf-8")}
     except ValueError as ve:
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
@@ -58,12 +60,10 @@ async def hash_value(to_hash: HashObject):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@router.get("/mongo/{mongo_id}")
-async def parse_mongo_id(mongo_id: str):
-    logging.info(mongo_id)
+@router.post("/convert/mongodb/id")
+async def parse_mongo_id(mdb_obj: MongoDbObject):
+    logging.info(mdb_obj)
     try:
-        return {"result": str(mongodb_tool.mongo_id_parse(_id=mongo_id))}
+        return {"result": str(mongodb_tool.mongo_id_parse(mdb_obj))}
     except ValueError as ve:
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
-
-

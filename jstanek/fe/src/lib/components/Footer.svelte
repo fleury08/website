@@ -11,7 +11,7 @@
 </script>
 
 <div class="footer">
-  <div>{copyright}</div>
+  <div>{copyright} | <a href="https://github.com/fleury08/website" target="_blank" rel="noreferrer">Code</a></div>
   <div>
     Created with:
   {#each links as link}

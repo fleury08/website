@@ -37,10 +37,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"unplugin-icons": "^0.18.5",
-		"vite": "^4.4.2"
-	},
-	"type": "module",
-	"dependencies": {
+		"vite": "^4.4.2",
 		"bits-ui": "^0.19.6",
 		"clsx": "^2.1.0",
 		"lucide-svelte": "^0.356.0",
@@ -48,5 +45,6 @@
 		"svelte-local-storage-store": "^0.6.0",
 		"tailwind-merge": "^2.2.1",
 		"tailwind-variants": "^0.2.0"
-	}
+	},
+	"type": "module"
 }

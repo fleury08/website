@@ -9,22 +9,14 @@ export default defineConfig(({ mode }) => {
 	 * won't load any svelte env variables from .env file
 	 */
 	const env = loadEnv(mode, process.cwd(), '');
+	const isDev = mode === 'development'
 	return {
+		build: {
+			minify: !isDev
+		},
 		plugins: [sveltekit(),
 			Icons({
 				compiler: 'svelte'
 			})],
-		server: {
-			proxy: {
-				'/api':
-					{
-						target: env.ENV_BACKEND_URL ?? 'http://localhost:8000',
-						changeOrigin: true,
-						secure: false,
-						rewrite: (path) => path.replace(/^\/api/, '')
-					}
-
-			}
-		}
 	}
 });

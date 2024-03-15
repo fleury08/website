@@ -9,11 +9,7 @@ export default defineConfig(({ mode }) => {
 	 * won't load any svelte env variables from .env file
 	 */
 	const env = loadEnv(mode, process.cwd(), '');
-	const isDev = mode === 'development'
 	return {
-		build: {
-			minify: !isDev
-		},
 		plugins: [sveltekit(),
 			Icons({
 				compiler: 'svelte'

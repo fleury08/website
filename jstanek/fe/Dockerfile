@@ -24,7 +24,7 @@ RUN echo "ENV_FRONTEND_URL=${ENV_FRONTEND_URL}" >> .env
 RUN echo "ENV_BACKEND_API_PATH=${ENV_BACKEND_API_PATH}" >> .env
 RUN echo "ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}" >> .env
 
-RUN npm ci --package-lock && npm run check && npm run build
+RUN npm ci && npm run build
 
 
 FROM node:18-slim

@@ -1,8 +1,15 @@
-
-
 FROM node:18 AS build
-ARG BACKEND_URL=http://localhost:8000
-ENV ENV_BACKEND_URL=${BACKEND_URL}
+
+ARG ENV_BACKEND_URL=http://localhost:8000
+ARG ENV_FRONTEND_URL=http://localhost:5173
+ARG ENV_BACKEND_API_PATH=/
+ARG ENV_FRONTEND_API_PATH=/api
+
+ENV ENV_BACKEND_URL=${ENV_BACKEND_URL}
+ENV ENV_FRONTEND_URL=${ENV_FRONTEND_URL}
+ENV ENV_BACKEND_API_PATH=${ENV_BACKEND_API_PATH}
+ENV ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}
+
 COPY ./src /build/src
 COPY ./*.json /build/
 COPY ./*.js /build/
@@ -12,23 +19,22 @@ COPY ./.npmrc /build/
 WORKDIR /build
 
 RUN touch .env
-RUN echo "ENV_BACKEND_URL=${BACKEND_URL}" >> .env
+RUN echo "ENV_BACKEND_URL=${ENV_BACKEND_URL}" >> .env
+RUN echo "ENV_FRONTEND_URL=${ENV_FRONTEND_URL}" >> .env
+RUN echo "ENV_BACKEND_API_PATH=${ENV_BACKEND_API_PATH}" >> .env
+RUN echo "ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}" >> .env
 
-#RUN echo ${ENV_BACKEND_URL}
-#RUN echo ${BACKEND_URL}
-RUN npm ci && npm run build
+RUN npm ci --package-lock && npm run check && npm run build
+
 
 FROM node:18-slim
-ARG BACKEND_URL=http://localhost:8000
-ENV ENV_BACKEND_URL=${BACKEND_URL}
+
 RUN mkdir -p /app/
 WORKDIR /app
 COPY --from=build /build/build .
 COPY --from=build /build/package*.json .
 COPY --from=build /build/node_modules ./node_modules
 COPY --from=build /build/.env ./.env
-#RUN echo ${ENV_BACKEND_URL}
-#RUN echo ${BACKEND_URL}
 
 CMD [ "node", "/app/index.js" ]
 

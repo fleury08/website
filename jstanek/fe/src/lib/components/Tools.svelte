@@ -3,10 +3,12 @@
 		base64Decode,
 		base64Encode,
 		defaultBase64Object,
-		defaultHashObject, defaultMongoDbIdObject,
+		defaultHashObject,
+		defaultMongoDbIdObject,
 		defaultPasswordOptions,
 		generatePassword,
-		hashText, mongoIdConvert
+		hashText,
+		mongoIdConvert
 	} from '$lib/tools';
 	import type { Base64Object, HashObject, MongoDbObject, PasswordOptions } from '$lib/types/tools';
 	import { Input } from '$lib/components/ui/input';
@@ -15,14 +17,14 @@
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Button } from '$lib/components/ui/button';
-	import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectInput } from '$lib/components/ui/select';
+	import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '$lib/components/ui/select';
 
-	type SelectedHash = { name: string, value: string, default: boolean }
-	const hashes: [SelectedHash] = [
+	type SelectedHash = { name: string, value: string, default?: boolean }
+	const hashes: SelectedHash[] = [
 		{ name: 'SHA-512', value: 'sha512', default: true },
 		{ name: 'SHA-256', value: 'sha256' },
-		{ name: 'SHA-1', value: 'sha1' },
-		{ name: 'MD5', value: 'md5' }
+		{ name: 'SHA-1', value: 'sha1'},
+		{ name: 'MD5', value: 'md5'},
 	];
   const passSecurities = ['Basic', 'Medium', 'Strong', 'Secure']
 
@@ -33,7 +35,7 @@
 	let base64EncObject: Base64Object = defaultBase64Object();
 	let base64DecObject: Base64Object = defaultBase64Object();
 	let mongoDBObject: MongoDbObject = defaultMongoDbIdObject();
-	let selectedHash: SelectedHash = hashes.find(x => x.default);
+	let selectedHash: SelectedHash = hashes.find(x => x.default) ?? hashes[0];
 	let selectedSecurity = "Strong";
 	let generated = {
 		password: '',
@@ -71,7 +73,7 @@
 			case 'Basic':
 				passwordObject.length = 8
 				passwordObject.special = false
-				passwordObject.numbers = false
+				passwordObject.numeric = false
 				break;
 			case 'Medium':
 				passwordObject.length = 12
@@ -136,7 +138,7 @@
 							<Label for="passwordSubsetSymbols">Special characters [$#/...]</Label>
 						</div>
 						<div><Label for="passwordOutput">Password</Label>
-							<Textarea rows="4"
+							<Textarea rows={4}
 												id="passwordOutput" value={generated.password} /></div>
 					</div>
 				</CardContent>
@@ -164,10 +166,9 @@
 								bind:value={hashObject.text} />
 						</div>
 						<div>
-							<Label for="hashAlgSelect">Hashing algorithm</Label>
-							<Select id="hashAlgSelect" bind:selected={selectedHash}>
+							<Select  bind:selected={selectedHash} >
 								<SelectTrigger>
-									<SelectValue placeholder="Select an algorithm, default is {hashes.find(x=>x.default).name}"/>
+									<SelectValue placeholder="Select an algorithm, default is {hashes.find(x=>x.default)?.name}"/>
 								</SelectTrigger>
 								<SelectContent>
 									{#each hashes as hash}
@@ -178,7 +179,7 @@
 							</Select>
 						</div>
 						<div>
-								<Textarea rows="5" id="hashOutput" value={generated.hash} />
+								<Textarea rows={5} id="hashOutput" value={generated.hash} />
 						</div>
 					</div>
 				</CardContent>

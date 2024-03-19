@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const frontend_url = writable("")
+export const frontend_path = writable("")

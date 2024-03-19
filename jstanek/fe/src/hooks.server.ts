@@ -1,10 +1,9 @@
 import { error, type Handle } from '@sveltejs/kit';
-import { ENV_BACKEND_API_PATH, ENV_BACKEND_URL, ENV_FRONTEND_API_PATH, ENV_FRONTEND_URL } from '$env/static/private';
+import { ENV_BACKEND_API_PATH, ENV_BACKEND_URL, ENV_FRONTEND_API_PATH } from '$env/static/private';
 import { env } from '$env/dynamic/private';
 
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const fe_url = ENV_FRONTEND_URL + ENV_FRONTEND_API_PATH;
 
 	// reject requests that don't come from the webapp, to avoid your proxy being abuse
 	if (env.NODE_ENV === 'production') {
@@ -15,8 +14,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	}
 
+	console.log(event.url.origin);
 	// API PROXY
-	if (event.request.url.startsWith(fe_url)) {
+	if (event.request.url.startsWith(event.url.origin + ENV_FRONTEND_API_PATH)) {
 		return apiProxyHandle({
 			event,
 			resolve
@@ -31,6 +31,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 const apiProxyHandle: Handle = async ({ event }) => {
 	const be_url = ENV_BACKEND_URL + ENV_BACKEND_API_PATH;
 	const backend_request = be_url + event.url.pathname.slice(ENV_FRONTEND_API_PATH.length+1);
+	console.log(backend_request);
 	event.request.headers.delete('connection');
 
 	return fetch(backend_request, {

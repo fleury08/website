@@ -1,6 +1,16 @@
 version: '3.7'
 services:
 
+  jstanek-website:
+    image: haproxy
+    container_name: jstanek-website
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - 8765:80
+    networks:
+      - jstanek-website
+
   jstanek-be:
     build:
       context: ./be
@@ -14,11 +24,7 @@ services:
       context: ./fe
       dockerfile: Dockerfile
       args:
-        - ENV_BACKEND_URL=http://jstanek-be:8000
-        - ENV_BACKEND_API_PATH=/
         - ENV_FRONTEND_API_PATH=/api
-    ports:
-      - "3000:3000"
     container_name: jstanek-website-fe
     networks:
       - jstanek-website

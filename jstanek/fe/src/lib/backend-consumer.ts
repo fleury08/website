@@ -1,7 +1,6 @@
 
 export const createWsConnection = (ws_url: URL) => {
 
-	ws_url.protocol="ws";
 	const ws = new WebSocket(ws_url);
 	ws.addEventListener("open", () => {
 		console.log("Opened WS connection");

@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from datetime import datetime
 
@@ -8,10 +9,12 @@ class ConnectionManager:
 
     def __init__(self) -> None:
         self.connections = {}
+        self.received_messages = {}  # session_id: queue
 
     async def connect(self, session_id: str, websocket: WebSocket):
         await websocket.accept()
         self.connections[session_id] = websocket
+        self.received_messages[session_id] = asyncio.Queue()
         await self.send_message(
             session_id,
             {
@@ -21,6 +24,25 @@ class ConnectionManager:
                 "timestamp": datetime.now().isoformat(),
             },
         )
+
+
+    async def get_received_message(self, session_id):
+        if not session_id:
+            raise ValueError("Invalid session id")
+
+        if session_id not in self.connections:
+            raise KeyError(f"Session id {session_id} not found")
+
+        return await self.received_messages[session_id].get()
+
+    async def queue_received_message(self, session_id, message):
+        if not session_id:
+            raise ValueError("Invalid session id")
+
+        if session_id not in self.connections:
+            raise KeyError(f"Session id {session_id} not found")
+
+        await self.received_messages[session_id].put(message)
 
     async def disconnect(self, session_id):
         websocket: WebSocket = self.connections[session_id]

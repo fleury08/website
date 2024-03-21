@@ -33,7 +33,7 @@ routerws = APIRouter(prefix="/ws", tags=["ws"],
                      responses={404: {"description": "Not found"}})
 
 
-@routerws.websocket("/ws")
+@routerws.websocket("/")
 async def create_webservice(websocket: WebSocket):
     ws_uuid = str(uuid.uuid4())
     try:
@@ -48,6 +48,7 @@ async def create_webservice(websocket: WebSocket):
         # creates a loop for communication
         while True:
             data = await websocket.receive_text()
+            ws_conn_manager.queue_received_message(ws_uuid, data)
             logging.getLogger(__name__).info("data: %s", data)
     except WebSocketException as wse:
         logging.getLogger(__name__).error(f"websocket error: {ws_uuid} {wse}")

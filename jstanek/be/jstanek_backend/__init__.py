@@ -1,10 +1,10 @@
 import logging
 
 from fastapi import FastAPI
-from .main import router
-from .websockets import routerws
+from .root import router_api
+from .websockets import router_ws
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 app: FastAPI = FastAPI()
-app.include_router(router)
-app.include_router(routerws)
+app.include_router(router_ws)
+app.include_router(router_api)

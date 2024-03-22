@@ -9,21 +9,18 @@ export default defineConfig(() => {
 			Icons({
 				compiler: 'svelte'
 			})],
-	//dev proxy settings
+		//dev proxy settings, prod uses reverse proxy
 		server: {
 			proxy:{
 				'/api': {
 					target: 'http://localhost:8000',
 					changeOrigin: true,
-					secure: false,
-					rewrite: (path) => path.replace(/^\/api/, '')
+					secure: false
 				},
 				'/ws':{
-					target: 'http://localhost:8000/ws',
+					target: 'http://localhost:8000',
 					ws: true,
-					changeOrigin: true,
-					secure: false,
-					rewrite: (path) => path.replace(/^\/ws/, '')
+					changeOrigin: true
 				}
 			}
 		}

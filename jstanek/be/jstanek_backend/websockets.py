@@ -29,11 +29,15 @@ from .connectionmanager import ws_conn_manager
 
 
 # Router for setting up security, globally can be set when initialising `FastAPI`
-routerws = APIRouter(prefix="/ws", tags=["ws"],
-                     responses={404: {"description": "Not found"}})
+router_ws = APIRouter(
+    dependencies=[],
+    prefix="/ws",
+    tags=["websocket"],
+    responses={404: {"description": "Not found"}},
+)
 
 
-@routerws.websocket("/")
+@router_ws.websocket(path="")
 async def create_webservice(websocket: WebSocket):
     ws_uuid = str(uuid.uuid4())
     try:
@@ -58,7 +62,7 @@ async def create_webservice(websocket: WebSocket):
         await ws_conn_manager.disconnect(ws_uuid)
 
 
-@routerws.get("/message")
+@router_ws.get("/message")
 async def send_message_to_all():
     return await ws_conn_manager.broadcast(
         {
@@ -70,7 +74,7 @@ async def send_message_to_all():
     )
 
 
-@routerws.get("/message/{session_id}")
+@router_ws.get("/message/{session_id}")
 async def send_message_to_user(session_id: str):
     await ws_conn_manager.send_message(
         session_id,

@@ -10,17 +10,22 @@ from .tools.hash_tool import HashObject
 from .tools.mongodb_tool import MongoDbObject
 from .tools.passsword_generator import PasswordOptions
 
-router = APIRouter(prefix="")
+router_api = APIRouter(
+    dependencies=[],
+    prefix="/api",
+    tags=["root"],
+    responses={404: {"description": "Not found"}},
+)
 
 
-@router.get("/")
+@router_api.get("/")
 async def read_root():
     return {"Hello": "World"}
 
 
-@router.post("/password")
+@router_api.post("/password")
 async def create_password(
-        password_options: PasswordOptions = None,
+    password_options: PasswordOptions = None,
 ):
     logging.info(password_options)
     if password_options:
@@ -33,7 +38,7 @@ async def create_password(
     raise HTTPException(HTTPStatus.BAD_REQUEST, detail="Invalid password options")
 
 
-@router.post("/base64/encode")
+@router_api.post("/base64/encode")
 async def base64_encode(b64object: Base64Object):
     logging.info(b64object)
     try:
@@ -42,7 +47,7 @@ async def base64_encode(b64object: Base64Object):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@router.post("/base64/decode")
+@router_api.post("/base64/decode")
 async def base64_decode(b64object: Base64Object):
     logging.info(b64object)
     try:
@@ -51,7 +56,7 @@ async def base64_decode(b64object: Base64Object):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@router.post("/hash")
+@router_api.post("/hash")
 async def hash_value(to_hash: HashObject):
     logging.info(to_hash)
     try:
@@ -60,7 +65,7 @@ async def hash_value(to_hash: HashObject):
         raise HTTPException(HTTPStatus.BAD_REQUEST, detail=str(ve))
 
 
-@router.post("/convert/mongodb/id")
+@router_api.post("/convert/mongodb/id")
 async def parse_mongo_id(mdb_obj: MongoDbObject):
     logging.info(mdb_obj)
     try:

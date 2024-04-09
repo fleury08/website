@@ -1,19 +1,10 @@
 import logging
 
 from fastapi import FastAPI
-from .main import router
-from .websockets import routerws
+from .root import router_api
+from .websockets import router_ws
 
-app = None
-
-
-def construct_app():
-    logging.basicConfig(level=logging.INFO)
-    _app: FastAPI = FastAPI()
-    _app.include_router(router)
-    _app.include_router(routerws)
-    return _app
-
-
-if __name__ == "__main__":
-    app = construct_app()
+logging.basicConfig(level=logging.DEBUG)
+app: FastAPI = FastAPI()
+app.include_router(router_ws)
+app.include_router(router_api)

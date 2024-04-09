@@ -1,5 +1,5 @@
 import type { Base64Object, HashObject, MongoDbObject, PasswordOptions, TextObject } from '$lib/types/tools';
-import { frontend_path } from '$lib/stores/settings';
+import { frontend_api_path } from '$lib/stores/settings';
 import { get } from 'svelte/store';
 
 
@@ -35,7 +35,7 @@ export const defaultMongoDbIdObject = (): MongoDbObject => {
 }
 
 export async function hashText(hashObject: HashObject) {
-	const hash = await fetch(`${get(frontend_path)}/hash`, {
+	const hash = await fetch(`${get(frontend_api_path)}/hash`, {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -48,7 +48,7 @@ export async function hashText(hashObject: HashObject) {
 }
 
 export async function generatePassword(passwordObject: PasswordOptions) {
-	const ps = await fetch(`${get(frontend_path)}/password`, {
+	const ps = await fetch(`${get(frontend_api_path)}/password`, {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -69,7 +69,7 @@ export async function base64Decode(base64Object: Base64Object) {
 }
 
 async function base64Convert(method: 'encode' | 'decode', base64Object: Base64Object) {
-	const b64o = await fetch(`${get(frontend_path)}/base64/${method}`, {
+	const b64o = await fetch(`${get(frontend_api_path)}/base64/${method}`, {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -81,7 +81,7 @@ async function base64Convert(method: 'encode' | 'decode', base64Object: Base64Ob
 }
 
 export async function mongoIdConvert(mdbObj: MongoDbObject) {
-	const mdbId = await fetch(`${get(frontend_path)}/convert/mongodb/id`, {
+	const mdbId = await fetch(`${get(frontend_api_path)}/convert/mongodb/id`, {
 		method: 'POST',
 		mode: 'cors',
 		headers: {

@@ -1,11 +1,10 @@
 import logging
+import random
 import string
 from dataclasses import dataclass
-import random
-from functools import cache
 
 
-@dataclass
+@dataclass(slots=True)
 class PasswordOptions:
     length: int = 16
     lowercase: bool = True

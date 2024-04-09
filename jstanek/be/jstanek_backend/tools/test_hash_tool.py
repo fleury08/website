@@ -12,7 +12,7 @@ class TestHashTool(unittest.TestCase):
         self.test_hash_sha1 = "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
 
     def test_hash_text(self):
-        obj = hash_tool.HashObject(text=self.test_text, alg="sha-512")
+        obj = hash_tool.HashContainer(text=self.test_text, alg="sha-512")
         self.assertEqual(
             hash_tool.hash_text(obj),
             self.test_hash_sha512,
@@ -29,3 +29,15 @@ class TestHashTool(unittest.TestCase):
             hash_tool.hash_text(obj),
             self.test_hash_sha1,
         )
+
+        obj.text = obj.text + "T"
+        self.assertNotEqual(hash_tool.hash_text(obj), self.test_hash_sha512)
+
+        obj.text = ""
+        self.assertRaises(ValueError, hash_tool.hash_text, obj)
+
+        obj.text = None
+        self.assertRaises(ValueError, hash_tool.hash_text, obj)
+
+        obj = None
+        self.assertRaises(ValueError, hash_tool.hash_text, obj)

@@ -2,7 +2,7 @@ import base64
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(slots=True)
 class Base64Object:
     text: str
 

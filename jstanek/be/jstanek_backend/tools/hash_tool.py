@@ -9,14 +9,15 @@ type SupportedAlgorithms = Literal[
 ]
 
 
-@dataclass
-class HashObject:
+@dataclass(slots=True)
+class HashContainer:
     text: str = ""
     alg: SupportedAlgorithms = "sha-512"
 
 
-
-def hash_text(to_hash: HashObject):
+def hash_text(to_hash: HashContainer):
+    if not to_hash:
+        raise ValueError("Missing hash container, cannot hash")
     if not to_hash.text:
         raise ValueError("Missing text, cannot hash")
     if not to_hash.alg:

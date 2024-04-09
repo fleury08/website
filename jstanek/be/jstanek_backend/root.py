@@ -6,8 +6,8 @@ from fastapi.exceptions import HTTPException
 
 from .tools import base64_tool, hash_tool, mongodb_tool, passsword_generator
 from .tools.base64_tool import Base64Object
-from .tools.hash_tool import HashObject
-from .tools.mongodb_tool import MongoDbObject
+from .tools.hash_tool import HashContainer
+from .tools.mongodb_tool import MongoDbContainer
 from .tools.passsword_generator import PasswordOptions
 
 router_api = APIRouter(
@@ -57,7 +57,7 @@ async def base64_decode(b64object: Base64Object):
 
 
 @router_api.post("/hash")
-async def hash_value(to_hash: HashObject):
+async def hash_value(to_hash: HashContainer):
     logging.info(to_hash)
     try:
         return {"result": hash_tool.hash_text(to_hash)}
@@ -66,7 +66,7 @@ async def hash_value(to_hash: HashObject):
 
 
 @router_api.post("/convert/mongodb/id")
-async def parse_mongo_id(mdb_obj: MongoDbObject):
+async def parse_mongo_id(mdb_obj: MongoDbContainer):
     logging.info(mdb_obj)
     try:
         return {"result": str(mongodb_tool.mongo_id_parse(mdb_obj))}

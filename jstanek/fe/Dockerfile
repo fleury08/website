@@ -1,4 +1,4 @@
-FROM node:18 AS build
+FROM node:current AS build
 
 ARG ENV_FRONTEND_API_PATH=/api
 ENV ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}
@@ -22,7 +22,7 @@ RUN echo "ENV_FRONTEND_WS_PATH=${ENV_FRONTEND_WS_PATH}" >> .env
 RUN npm ci && npm run build
 
 
-FROM node:18-slim
+FROM node:current-slim
 
 RUN mkdir -p /app/
 WORKDIR /app

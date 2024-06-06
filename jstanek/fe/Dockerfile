@@ -1,3 +1,7 @@
+###########
+#BUILD ENV#
+###########
+
 FROM node:current AS build
 
 ARG ENV_FRONTEND_API_PATH=/api
@@ -7,21 +11,28 @@ ARG ENV_FRONTEND_WS_PATH=/ws
 ENV ENV_FRONTEND_WS_PATH=${ENV_FRONTEND_WS_PATH}
 
 
-COPY ./src /build/src
-COPY ./*.json /build/
-COPY ./*.js /build/
-COPY ./*.cjs /build/
-COPY ./*.ts /build/
-COPY ./.npmrc /build/
 WORKDIR /build
+COPY ./src ./src
+COPY ./components.json .
+COPY ./package-lock.json .
+COPY ./package.json .
+COPY ./tsconfig.json .
+COPY ./svelte.config.js .
+COPY ./tailwind.config.js .
+COPY ./postcss.config.cjs .
+COPY ./vite.config.ts .
+COPY ./.npmrc .
 
 RUN touch .env
 RUN echo "ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}" >> .env
 RUN echo "ENV_FRONTEND_WS_PATH=${ENV_FRONTEND_WS_PATH}" >> .env
 
-RUN npm ci && npm run build
+RUN npm install --verbose
+RUN npm run build
 
-
+###############
+#BUILD TO PROD#
+###############
 FROM node:current-slim
 
 RUN mkdir -p /app/

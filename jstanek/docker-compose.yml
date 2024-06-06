@@ -4,6 +4,7 @@ services:
   jstanek-website:
     image: haproxy
     container_name: jstanek-website
+    restart: always
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     ports:
@@ -16,6 +17,7 @@ services:
       context: ./be
       dockerfile: Dockerfile
     container_name: jstanek-website-be
+    restart: always
     networks:
       - jstanek-website
 
@@ -25,8 +27,8 @@ services:
       dockerfile: Dockerfile
       args:
         - ENV_FRONTEND_API_PATH=/api
-        - ENV_FRONTEND_WS_PATH=/ws
     container_name: jstanek-website-fe
+    restart: always
     networks:
       - jstanek-website
 

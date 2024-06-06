@@ -25,6 +25,7 @@ services:
       dockerfile: Dockerfile
       args:
         - ENV_FRONTEND_API_PATH=/api
+        - ENV_FRONTEND_WS_PATH=/ws
     container_name: jstanek-website-fe
     networks:
       - jstanek-website

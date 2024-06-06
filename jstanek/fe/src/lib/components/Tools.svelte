@@ -6,11 +6,11 @@
 		defaultHashObject,
 		defaultMongoDbIdObject,
 		defaultPasswordOptions,
-		generatePassword,
+		generatePassword, generateQrCode,
 		hashText,
 		mongoIdConvert
-	} from '$lib/tools';
-	import type { Base64Object, HashObject, MongoDbObject, PasswordOptions } from '$lib/types/tools';
+	} from '$lib/tools'
+	import type { Base64Object, HashObject, MongoDbObject, PasswordOptions, TextObject } from '$lib/types/tools'
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '$lib/components/ui/card';
@@ -24,6 +24,7 @@
 		SelectTrigger,
 		SelectValue
 	} from '$lib/components/ui/select';
+	import { defaultTextObject } from '$lib/tools.js'
 
 	type SelectedHash = { name: string; value: string; default?: boolean };
 	const hashes: SelectedHash[] = [
@@ -39,6 +40,7 @@
 	let base64EncObject: Base64Object = defaultBase64Object();
 	let base64DecObject: Base64Object = defaultBase64Object();
 	let mongoDBObject: MongoDbObject = defaultMongoDbIdObject();
+	let qrCodeObject: TextObject = defaultTextObject();
 	let selectedHash: SelectedHash = hashes.find((x) => x.default) ?? hashes[0];
 	let selectedSecurity = 'Strong';
 	let generated = {
@@ -46,8 +48,13 @@
 		hash: '',
 		base64decoded: '',
 		base64encoded: '',
-		mongoTimestamp: ''
+		mongoTimestamp: '',
+		qrCode: ''
 	};
+
+	async function generateQrCodeHandler() {
+		generated.qrCode = await generateQrCode(qrCodeObject);
+	}
 
 	async function generatePasswordHandler() {
 		generated.password = await generatePassword(passwordObject);
@@ -249,6 +256,23 @@
 					</div>
 				</CardContent>
 				<CardFooter />
+			</Card>
+
+			<Card>
+				<CardHeader>
+					<CardTitle>QR code generator</CardTitle>
+				</CardHeader>
+					<CardContent>
+						<div class="w-full mb-3 gap-3 flex-col flex">
+							<div>
+								<Label for="qrcodeInput">Input</Label>
+								<Input id="qrcodeInput" type="text" on:change={generateQrCodeHandler} bind:value={qrCodeObject.text} />
+							</div>
+							<div>
+								<img class:hidden={!generated.qrCode} src={generated.qrCode} alt="QR Code" />
+							</div>
+						</div>
+					</CardContent>
 			</Card>
 
 			<Card>

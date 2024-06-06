@@ -92,3 +92,16 @@ export async function mongoIdConvert(mdbObj: MongoDbObject) {
 
 	return mdbId.result;
 }
+
+
+export async function generateQrCode(textObject: TextObject) {
+	const qr = await fetch(`${get(frontend_api_path)}/qrcode`, {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(textObject)
+	}).then((j) => j.json());
+	return 'data:image/png;base64,' + qr.result;
+}

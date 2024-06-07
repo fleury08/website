@@ -16,7 +16,7 @@ RUN poetry build
 ######
 FROM ubuntu:rolling
 RUN apt update
-RUN apt install python3-pip python3-venv python3-poetry -y
+RUN apt install python3-pip python3-venv rustc cargo -y
 RUN mkdir /app
 COPY --from=build /app/dist/*.whl /app/
 RUN python3 -m venv /app/venv

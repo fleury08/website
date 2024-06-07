@@ -6,18 +6,21 @@ COPY . /app
 
 #arm64 library specifics
 RUN apt update
-RUN apt install rustc python3-pip -y
-RUN pip install poetry
+RUN apt install python3-pip python3-poetry -y
 RUN poetry lock --no-cache
 RUN poetry build
 
+
+######
+# PROD BUILD
+######
 FROM ubuntu:rolling
 RUN apt update
-RUN apt install rustc -y
+RUN apt install python3-pip python3-venv python3-poetry -y
 RUN mkdir /app
 COPY --from=build /app/dist/*.whl /app/
-RUN pip install --upgrade pip setuptools wheel
-RUN pip install /app/*.whl
+RUN python3 -m venv /app/venv
+RUN /app/venv/bin/pip3 install /app/*.whl
 
-CMD ["uvicorn", "jstanek_backend:app", "--reload", "--host", "0.0.0.0"]
+CMD ["/app/venv/bin/uvicorn", "jstanek_backend:app", "--reload", "--host", "0.0.0.0"]
 

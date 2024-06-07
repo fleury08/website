@@ -1,4 +1,3 @@
-version: '3.7'
 services:
 
   jstanek-website:
@@ -16,6 +15,7 @@ services:
     build:
       context: ./be
       dockerfile: Dockerfile
+      network: host
     container_name: jstanek-website-be
     restart: always
     networks:
@@ -34,5 +34,3 @@ services:
 
 networks:
   jstanek-website:
-
-

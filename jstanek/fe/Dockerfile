@@ -41,6 +41,7 @@ COPY --from=build /build/build .
 COPY --from=build /build/package*.json .
 COPY --from=build /build/node_modules ./node_modules
 COPY --from=build /build/.env ./.env
+RUN cat .env
 
 CMD [ "node", "/app/index.js" ]
 

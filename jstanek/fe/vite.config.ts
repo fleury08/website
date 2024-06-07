@@ -14,13 +14,11 @@ export default defineConfig(() => {
 			proxy:{
 				'/api': {
 					target: 'http://127.0.0.1:8000',
-					ssl: false,
 					changeOrigin: true,
 					secure: false,
 				},
 				'/ws':{
 					target: 'http://127.0.0.1:8000',
-					ssl: false,
 					ws: true,
 					changeOrigin: true
 				}

@@ -22,5 +22,5 @@ COPY --from=build /app/dist/*.whl /app/
 RUN python3 -m venv /app/venv
 RUN /app/venv/bin/pip3 install /app/*.whl
 
-CMD ["/app/venv/bin/uvicorn", "jstanek_backend:app", "--reload", "--host", "0.0.0.0"]
+CMD ["/app/venv/bin/uvicorn", "jstanek_backend:app", "--host", "0.0.0.0"]
 

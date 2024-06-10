@@ -12,9 +12,9 @@
 	export let data: LayoutData;
 	onMount(()=>{
 		frontend_api_path.set(data.frontend_api_path)
-		frontend_ws_path.set(data.frontend_ws_path)
-		const ws = createWsConnection($frontend_ws_path)
-		console.log(ws);
+		//frontend_ws_path.set(data.frontend_ws_path)
+		//const ws = createWsConnection($frontend_ws_path)
+		//console.log(ws);
 	})
 </script>
 

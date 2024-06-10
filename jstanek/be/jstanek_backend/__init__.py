@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 def construct_app():
     _app: FastAPI = FastAPI()
-    _app.include_router(router_ws)
+    # _app.include_router(router_ws)
     _app.include_router(router_api)
     return _app
 

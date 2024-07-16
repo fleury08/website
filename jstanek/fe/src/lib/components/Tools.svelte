@@ -25,6 +25,7 @@
 		SelectValue
 	} from '$lib/components/ui/select';
 	import { defaultTextObject } from '$lib/tools.js'
+	import Page from '$lib/components/Page.svelte'
 
 	type SelectedHash = { name: string; value: string; default?: boolean };
 	const hashes: SelectedHash[] = [
@@ -103,9 +104,9 @@
 	}
 </script>
 
-<div class="page">
-	<div class="text-6xl text-center pb-10">Useful tools</div>
-	<div class="container">
+<Page>
+	<svelte:fragment slot="title">Useful tools</svelte:fragment>
+
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			<Card>
 				<CardHeader>
@@ -280,5 +281,5 @@
 				<CardContent>...more to come.</CardContent>
 			</Card>
 		</div>
-	</div>
-</div>
+
+</Page>

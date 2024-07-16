@@ -2,10 +2,10 @@
 	import Contact from './Contact.svelte';
 	import portrait from '$lib/assets/img/DSC_7787upBW_closeup.jpg';
 	import CoinParallax from '$lib/components/CoinParallax/CoinParallax.svelte';
+	import Page from '$lib/components/Page.svelte'
 </script>
 
-<div class="page">
-	<div class="container">
+<Page>
 		<div class="flex flex-col sm:flex-row gap-12 sm:gap-24 items-center">
 			<div class="flex flex-col gap-3 w-8/12 sm:w-4/12">
 				<CoinParallax image={portrait} borderless={false} />
@@ -25,5 +25,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+</Page>

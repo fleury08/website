@@ -4,13 +4,14 @@
 	import type { TimelinePointType } from '$lib/types/tools'
 
 	import cenynizke from '$lib/assets/img/cenynizke.png'
+	import binderadvokat from '$lib/assets/img/binder-advokat.png'
 	import sokolprimetice from '$lib/assets/img/sokolprimetice.png'
 	import prettifier from '$lib/assets/img/PrettifierJSON.png'
 	import maluckevinarstvi from '$lib/assets/img/malucke-vinarstvi.png'
 
 	const points: TimelinePointType[] = [
 		{
-			date: new Date(2013, 0, 1),
+			date: new Date(2005, 0, 1),
 			title: 'Služby Kubík',
 			text: '',
 			img: cenynizke,
@@ -18,11 +19,18 @@
 		},
 		{
 
-			date: new Date(2014, 7, 1),
+			date: new Date(2009, 0, 1),
 			title: 'TJ Sokol Přímětice',
 			text: '',
 			img: sokolprimetice,
 			url: 'https://sokolprimetice.cz'
+		},
+		{
+			date: new Date(2016,0,1),
+			title: 'Binder Advokát',
+			text: '',
+			img: binderadvokat,
+			url: 'https://binder-advokat.cz'
 		},
 		{
 			date: new Date(2018, 7, 1),

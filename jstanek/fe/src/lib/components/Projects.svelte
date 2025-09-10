@@ -8,12 +8,13 @@
 	import sokolprimetice from '$lib/assets/img/sokolprimetice.png'
 	import prettifier from '$lib/assets/img/PrettifierJSON.png'
 	import maluckevinarstvi from '$lib/assets/img/malucke-vinarstvi.png'
+	import vinicesrb from '$lib/assets/img/vinicesrb.png'
 
 	const points: TimelinePointType[] = [
 		{
 			date: new Date(2005, 0, 1),
 			title: 'Služby Kubík',
-			text: '',
+			text: 'My first payed job. It was horrible, but I learned a lot. Everybody has to start somewhere.',
 			img: cenynizke,
 			url: 'https://cenynizke.cz'
 		},
@@ -21,30 +22,37 @@
 
 			date: new Date(2009, 0, 1),
 			title: 'TJ Sokol Přímětice',
-			text: '',
+			text: 'Our local football club page. Made with WordPress. Still active and well.',
 			img: sokolprimetice,
 			url: 'https://sokolprimetice.cz'
 		},
 		{
 			date: new Date(2016,0,1),
 			title: 'Binder Advokát',
-			text: '',
+			text: 'Static website for a friend. Simple static website made with Bootstrap.',
 			img: binderadvokat,
 			url: 'https://binder-advokat.cz'
 		},
 		{
 			date: new Date(2018, 7, 1),
 			title: 'Prettifier',
-			text: '',
+			text: 'Simple Vala app for Elementary OS, I needed an app so I created. It was fun experiment to know how to distribute app on a Linux platform, specifically through flatpak.',
 			img: prettifier,
 			url: 'https://github.com/fleury08/prettifier'
 		},
 		{
 			date: new Date(2023, 0, 1),
 			title: 'Malučké Vinařství',
-			text: 'Local winehouse, simple static website, made with SvelteKit and Tailwindcss',
+			text: 'Local winehouse, simple static website, made with SvelteKit and Tailwind CSS.',
 			img: maluckevinarstvi,
 			url: 'https://maluckevinarstvi.cz/',
+		},
+		{
+			date: new Date(2025, 4, 1),
+			title: 'Vinařství Srb',
+			text: 'Another local winehouse, again simple static website, made with SvelteKit and Tailwindcss but this time with added a simple e-commerce site created with WordPress and WooCommerce',
+			img: vinicesrb,
+			url: 'https://vinicesrb.cz/',
 		}
 	]
 </script>

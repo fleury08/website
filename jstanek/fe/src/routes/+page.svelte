@@ -21,8 +21,6 @@
 
 	<Tools />
 
-	<Statistics />
-
 	<Donations />
 
 	<Footer></Footer>

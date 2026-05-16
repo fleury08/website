@@ -46,13 +46,6 @@
 			text: 'Local winehouse, simple static website, made with SvelteKit and Tailwind CSS.',
 			img: maluckevinarstvi,
 			url: 'https://maluckevinarstvi.cz/',
-		},
-		{
-			date: new Date(2025, 4, 1),
-			title: 'Vinařství Srb',
-			text: 'Another local winehouse, again simple static website, made with SvelteKit and Tailwindcss but this time with added a simple e-commerce site created with WordPress and WooCommerce',
-			img: vinicesrb,
-			url: 'https://vinicesrb.cz/',
 		}
 	]
 </script>

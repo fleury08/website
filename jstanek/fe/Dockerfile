@@ -14,14 +14,10 @@ ENV ENV_FRONTEND_WS_PATH=${ENV_FRONTEND_WS_PATH}
 WORKDIR /build
 COPY ./src ./src
 COPY ./components.json .
-COPY ./package-lock.json .
 COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./svelte.config.js .
-COPY ./tailwind.config.js .
-COPY ./postcss.config.cjs .
 COPY ./vite.config.ts .
-COPY ./.npmrc .
 
 RUN touch .env
 RUN echo "ENV_FRONTEND_API_PATH=${ENV_FRONTEND_API_PATH}" >> .env

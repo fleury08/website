@@ -1,0 +1,8 @@
+feat(ui): add homepage and app routes, coin parallax, donations page
+
+New layout and route structure for the donation campaign; adds CoinParallax hero and a donation-specific page.
+
+Footer:
+- npm run dev
+- npm run build
+- npm run preview

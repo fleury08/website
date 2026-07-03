@@ -1,7 +1,7 @@
 <script>
   import IconSun from "~icons/bi/sun"
   import IconMoon from "~icons/bi/moon"
-  import { Button } from "$lib/components/ui/button/index";
+  import { Button} from "$lib/components/ui/button";
 
   import { toggleMode } from "mode-watcher";
 </script>

@@ -11,21 +11,20 @@
 		mongoIdConvert
 	} from '$lib/tools'
 	import type { Base64Object, HashObject, MongoDbObject, PasswordOptions, TextObject } from '$lib/types/tools'
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+
 	import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Textarea } from '$lib/components/ui/textarea';
+
+
 	import { Button } from '$lib/components/ui/button';
-	import {
-		Select,
-		SelectContent,
-		SelectItem,
-		SelectTrigger,
-		SelectValue
-	} from '$lib/components/ui/select';
+
 	import { defaultTextObject } from '$lib/tools.js'
 	import Page from '$lib/components/Page.svelte'
+	import {Textarea} from "$lib/components/ui/textarea";
+	import {Label} from "$lib/components/ui/label";
+	import {Select, SelectContent, SelectItem} from './ui/select'
+	import SelectTrigger from './ui/select/select-trigger.svelte'
+	import {Input} from "$lib/components/ui/input";
+	import {Checkbox} from "$lib/components/ui/checkbox";
 
 	type SelectedHash = { name: string; value: string; default?: boolean };
 	const hashes: SelectedHash[] = [
@@ -176,12 +175,10 @@
 							<Input id="hashInput" bind:value={hashObject.text} />
 						</div>
 						<div>
-							<Select bind:selected={selectedHash}>
+							<Select type="single" value={selectedHash.value}>
 								<SelectTrigger>
-									<SelectValue
-										placeholder="Select an algorithm, default is {hashes.find((x) => x.default)
-											?.name}"
-									/>
+									Select an algorithm, default is {hashes.find((x) => x.default)
+									?.name}
 								</SelectTrigger>
 								<SelectContent>
 									{#each hashes as hash}

@@ -1,23 +1,19 @@
 <script lang="ts">
-    import '../app.pcss';
+    import '../app.css';
     import '$lib/assets/css/theme.pcss';
     import {ModeWatcher} from 'mode-watcher';
-    import type {LayoutData} from './$types';
     import {onMount} from 'svelte';
     import {frontend_api_path} from '$lib/stores/settings';
 
 
-    export let data: LayoutData;
+    let {data, children} = $props()
 
     onMount(() => {
         frontend_api_path.set(data.frontend_api_path)
-        //frontend_ws_path.set(data.frontend_ws_path)
-        //const ws = createWsConnection($frontend_ws_path)
-        //console.log(ws);
     })
 </script>
 
 <ModeWatcher/>
-<slot></slot>
+{@render children()}
 
 

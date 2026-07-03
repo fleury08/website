@@ -1,8 +1,9 @@
 <script>
 	import bitcoin from '$lib/assets/img/bitcoin.png'
 	import banano from '$lib/assets/img/share_ban_3h6guuuhqimjzm4d7w6tywzwtmhyq13rg5rqjmt5piysomhdoek6jcsfmgki.png'
-	import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '$lib/components/ui/card/index'
+
 	import Page from '$lib/components/Page.svelte'
+	import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "$lib/components/ui/card";
 </script>
 <Page>
 	<svelte:fragment slot="title">Donations</svelte:fragment>

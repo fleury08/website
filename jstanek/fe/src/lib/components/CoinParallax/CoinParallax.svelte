@@ -40,7 +40,7 @@
         overflow-hidden
         transition-transform
         duration-100
-        ease-in;
+        animate-[ease_in];
 
         --opacity-before-content: 0;
         --left-before-content: -80%;
@@ -53,14 +53,14 @@
     }
 
     .card-parallax-content {
-        @apply z-[1]
+        @apply z-1
         w-fit
         m-auto
         relative
         overflow-hidden
         transition-transform
         duration-300
-        ease-in-out;
+        animate-[ease_in_out];
         transform-style: preserve-3d;
     }
 
@@ -71,13 +71,13 @@
         w-[150%]
         h-[150%]
         rotate-45
-        z-[2]
+        z-2
         transition-opacity
         duration-200
         ease-linear
-        opacity-[var(--opacity-before-content)]
-        left-[var(--left-before-content)]
-        top-[var(--top-before-content)];
+        opacity-(--opacity-before-content)
+        left-(--left-before-content)
+        top-(--top-before-content);
         background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%);
     }
 

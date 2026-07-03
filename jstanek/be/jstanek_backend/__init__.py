@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from .root import router_api
 from .websockets import router_ws
 
-app = None
+
 logging.basicConfig(level=logging.DEBUG)
 
 

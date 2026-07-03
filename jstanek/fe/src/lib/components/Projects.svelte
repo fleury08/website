@@ -8,7 +8,7 @@
 	import sokolprimetice from '$lib/assets/img/sokolprimetice.png'
 	import prettifier from '$lib/assets/img/PrettifierJSON.png'
 	import maluckevinarstvi from '$lib/assets/img/malucke-vinarstvi.png'
-	import vinicesrb from '$lib/assets/img/vinicesrb.png'
+
 
 	const points: TimelinePointType[] = [
 		{

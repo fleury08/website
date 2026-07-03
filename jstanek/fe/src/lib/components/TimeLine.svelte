@@ -10,3 +10,4 @@ $: points = points.sort((a, b) => a.date > b.date ? 1 : -1)
 {#each points as point}
 	<TimelinePoint {point} last={points.length - 1 === points.indexOf(point)} first={points.indexOf(point) === 0}/>
 {/each}
+

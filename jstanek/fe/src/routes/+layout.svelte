@@ -6,7 +6,7 @@
     import {frontend_api_path} from '$lib/stores/settings';
 
 
-    let {data, children} = $props()
+    let { data, children } = $props();
 
     onMount(() => {
         frontend_api_path.set(data.frontend_api_path)

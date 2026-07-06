@@ -14,7 +14,7 @@
   <div>{copyright} | <a href="https://github.com/fleury08/website" target="_blank" rel="noreferrer">Code</a></div>
   <div>
     Created with:
-  {#each links as link}
+  {#each links as link (link.name)}
     <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
   {/each}
   </div>

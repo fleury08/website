@@ -6,7 +6,7 @@
 	import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "$lib/components/ui/card";
 </script>
 <Page>
-	<svelte:fragment slot="title">Donations</svelte:fragment>
+	{#snippet title()}Donations{/snippet}
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 			<Card class="border-0 shadow-none">
 				<CardHeader>

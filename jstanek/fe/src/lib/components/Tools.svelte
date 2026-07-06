@@ -35,22 +35,22 @@
 	];
 	const passSecurities = ['Basic', 'Medium', 'Strong', 'Secure'];
 
-	let passwordObject: PasswordOptions = defaultPasswordOptions();
-	let hashObject: HashObject = defaultHashObject();
-	let base64EncObject: Base64Object = defaultBase64Object();
-	let base64DecObject: Base64Object = defaultBase64Object();
-	let mongoDBObject: MongoDbObject = defaultMongoDbIdObject();
-	let qrCodeObject: TextObject = defaultTextObject();
-	let selectedHash: SelectedHash = hashes.find((x) => x.default) ?? hashes[0];
-	let selectedSecurity = 'Strong';
-	let generated = {
+	let passwordObject = $state<PasswordOptions>(defaultPasswordOptions());
+	let hashObject = $state<HashObject>(defaultHashObject());
+	let base64EncObject = $state<Base64Object>(defaultBase64Object());
+	let base64DecObject = $state<Base64Object>(defaultBase64Object());
+	let mongoDBObject = $state<MongoDbObject>(defaultMongoDbIdObject());
+	let qrCodeObject = $state<TextObject>(defaultTextObject());
+	let selectedHash = $state<SelectedHash>(hashes.find((x) => x.default) ?? hashes[0]);
+	let selectedSecurity = $state('Strong');
+	let generated = $state({
 		password: '',
 		hash: '',
 		base64decoded: '',
 		base64encoded: '',
 		mongoTimestamp: '',
 		qrCode: ''
-	};
+	});
 
 	async function generateQrCodeHandler() {
 		generated.qrCode = await generateQrCode(qrCodeObject);
@@ -61,8 +61,12 @@
 	}
 
 	async function hashTextHandler() {
-		generated.hash = await hashText(hashObject);
+		generated.hash = await hashText({
+			...hashObject,
+			alg: selectedHash.value
+		});
 	}
+
 
 	async function base64EncodeHandler() {
 		generated.base64encoded = await base64Encode(base64EncObject);
@@ -98,13 +102,11 @@
 		return passwordObject;
 	}
 
-	$: {
-		hashObject.alg = selectedHash.value;
-	}
 </script>
 
+
 <Page>
-	<svelte:fragment slot="title">Useful tools</svelte:fragment>
+	{#snippet title()}Useful tools{/snippet}
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			<Card>
@@ -116,11 +118,11 @@
 						<div
 							class="flex max-sm:flex-col md:max-lg:flex-row lg:max-xl:flex-col xl:flex-row gap-1"
 						>
-							{#each passSecurities as passSecurity}
+							{#each passSecurities as passSecurity (passSecurity)}
 								<Button
 									class="w-full"
 									variant={selectedSecurity === passSecurity ? 'default' : 'outline'}
-									on:click={passTemplateHandler}
+									onclick={passTemplateHandler}
 									data-value={passSecurity}>{passSecurity}</Button
 								>
 							{/each}
@@ -158,7 +160,7 @@
 					</div>
 				</CardContent>
 				<CardFooter>
-					<Button class="w-full" id="passwordRegenerate" on:click={generatePasswordHandler}
+					<Button class="w-full" id="passwordRegenerate" onclick={generatePasswordHandler}
 						>Generate
 					</Button>
 				</CardFooter>
@@ -181,7 +183,7 @@
 									?.name}
 								</SelectTrigger>
 								<SelectContent>
-									{#each hashes as hash}
+										{#each hashes as hash (hash.value)}
 										<SelectItem value={hash.value} label={hash.name}>{hash.name}</SelectItem>
 									{/each}
 								</SelectContent>
@@ -193,7 +195,7 @@
 					</div>
 				</CardContent>
 				<CardFooter>
-					<Button class="w-full" on:click={hashTextHandler}>Generate</Button>
+					<Button class="w-full" onclick={hashTextHandler}>Generate</Button>
 				</CardFooter>
 			</Card>
 
@@ -208,7 +210,7 @@
 							<Input
 								id="base64EncodeInput"
 								type="text"
-								on:keyup={base64EncodeHandler}
+								onkeyup={base64EncodeHandler}
 								bind:value={base64EncObject.text}
 							/>
 						</div>
@@ -221,7 +223,7 @@
 							<Input
 								id="base64DecodeInput"
 								type="text"
-								on:keyup={base64DecodeHandler}
+								onkeyup={base64DecodeHandler}
 								bind:value={base64DecObject.text}
 							/>
 						</div>
@@ -243,7 +245,7 @@
 							<Input
 								id="mongoDbIdInput"
 								type="text"
-								on:keyup={mongoIdConvertHandler}
+								onkeyup={mongoIdConvertHandler}
 								bind:value={mongoDBObject.object_id}
 							/>
 						</div>
@@ -264,7 +266,7 @@
 						<div class="w-full mb-3 gap-3 flex-col flex">
 							<div>
 								<Label for="qrcodeInput">Input</Label>
-								<Input id="qrcodeInput" type="text" on:change={generateQrCodeHandler} bind:value={qrCodeObject.text} />
+								<Input id="qrcodeInput" type="text" onchange={generateQrCodeHandler} bind:value={qrCodeObject.text} />
 							</div>
 							<div>
 								<img class:hidden={!generated.qrCode} src={generated.qrCode} alt="QR Code" />

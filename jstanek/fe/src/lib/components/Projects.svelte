@@ -51,6 +51,6 @@
 </script>
 
 <Page>
-	<svelte:fragment slot="title">Public projects</svelte:fragment>
+	{#snippet title()}Public projects{/snippet}
 	<TimeLine {points}></TimeLine>
 </Page>

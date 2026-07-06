@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type { TimelinePointType } from '$lib/types/tools'
 
-	export let first = false
-	export let last = false
-	export let point: TimelinePointType | undefined
+	let { first = false, last = false, point } = $props<{
+		first?: boolean;
+		last?: boolean;
+		point?: TimelinePointType;
+	}>();
 </script>
 {#if point}
 	<div class="flex gap-3">
